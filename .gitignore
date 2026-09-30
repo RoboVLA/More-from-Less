@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Editors and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local experiment outputs
+outputs/
+runs/
+checkpoints/
+logs/
+wandb/
+
+# Large research artifacts kept outside Git
+Data/
+data/
+datasets/
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.zip
+*.rar
+*.7z
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.ply
+*.splat
+*.usd
+*.usda
+*.usdc
+
+# Keep lightweight project-page media.
+!static/media/**/*.jpg
+!static/media/**/*.jpeg
+!static/media/**/*.png
+!static/media/**/*.webp
+!static/media/**/*.gif
+
+
+# Local release preparation
+!static/media/experiments/real_pour_global.mp4
+!static/media/experiments/real_wipe_global.mp4
+*.egg-info/
+build/
+dist/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+local_config.json

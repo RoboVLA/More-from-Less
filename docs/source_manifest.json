@@ -1,0 +1,309 @@
+{
+  "captured_on": "2026-09-21",
+  "files": [
+    {
+      "source": "code/GaussianModel/train.py",
+      "release": "reference_code/gaussian_grouping/train.py",
+      "sha256": "8273893a667e4b74ee4a7ec516743e7b8d8386a336f5234fa8cc288ca1ac6e30",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/render.py",
+      "release": "reference_code/gaussian_grouping/render.py",
+      "sha256": "a3b0a252b6f5b10c5726b559a25ab236bf8f1e08062bf36566f798bf4ec19ef5",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/render_lerf_mask.py",
+      "release": "reference_code/gaussian_grouping/render_lerf_mask.py",
+      "sha256": "6bc2dc5bc756d384e8e7cbc2a0b43533e9c213b4f5dcb0e60c9e12dcf8da4f32",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/convert.py",
+      "release": "reference_code/gaussian_grouping/convert.py",
+      "sha256": "e534a5f64425412dc7a1ae4360f8caf3421167984bbaca307916d8a40ba16b64",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/video_to_img.py",
+      "release": "reference_code/gaussian_grouping/video_to_img.py",
+      "sha256": "e388c3086bc97ce89627eaaffbc53e9ee1b2f8982c52f4934fef4068eae056de",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/LICENSE",
+      "release": "reference_code/gaussian_grouping/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/arguments/__init__.py",
+      "release": "reference_code/gaussian_grouping/arguments/__init__.py",
+      "sha256": "5ea28040ba29974b99386bb9dfe9545fa40614d553e9c18b9b0c829b2fd6e598",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/gaussian_renderer/network_gui.py",
+      "release": "reference_code/gaussian_grouping/gaussian_renderer/network_gui.py",
+      "sha256": "7e392b8122a8e1359b4550769eac06190806a8c2eeb7f5aa7cbd025738dedf89",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/gaussian_renderer/__init__.py",
+      "release": "reference_code/gaussian_grouping/gaussian_renderer/__init__.py",
+      "sha256": "7c7ef10c89c6085b59b582e3d5af70c5170638bcc48c191482f87fdbc9c5608e",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/scene/cameras.py",
+      "release": "reference_code/gaussian_grouping/scene/cameras.py",
+      "sha256": "3806051f808fa95548a82f80d9b578f7f4b15ef733f7b60fb01f6ceb130192ac",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/scene/colmap_loader.py",
+      "release": "reference_code/gaussian_grouping/scene/colmap_loader.py",
+      "sha256": "6948ce06366e1f727ddffc39a445bf4b6873824f02abc39df63eb0c8f0fb3f36",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/scene/dataset_readers.py",
+      "release": "reference_code/gaussian_grouping/scene/dataset_readers.py",
+      "sha256": "969ad3ff54a8977344c203aeb0c046bfcd276906b20b6d6958ea037f80131723",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/scene/gaussian_model.py",
+      "release": "reference_code/gaussian_grouping/scene/gaussian_model.py",
+      "sha256": "37f9240f6fea4cc021e6355677ce13425612a3e6ff4baf8fe4ef274b137ef5a3",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/scene/__init__.py",
+      "release": "reference_code/gaussian_grouping/scene/__init__.py",
+      "sha256": "e63d57e7316d5dc8a86547b4c176873bd9ae9937c722d200f3a70256de9d5d58",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/utils/camera_utils.py",
+      "release": "reference_code/gaussian_grouping/utils/camera_utils.py",
+      "sha256": "16d4f3b084894d70a7390a25042af60527fcadb687cd1352e97df69a15e0a0c9",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/utils/general_utils.py",
+      "release": "reference_code/gaussian_grouping/utils/general_utils.py",
+      "sha256": "97553507caa4f3e6849919d9658b0b0da064e6c8f19142045da79072171ffa51",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/utils/graphics_utils.py",
+      "release": "reference_code/gaussian_grouping/utils/graphics_utils.py",
+      "sha256": "d6e75de8161e98b72c2691e8a944a842e1b6625d2306035d079c868ac632edfc",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/utils/image_utils.py",
+      "release": "reference_code/gaussian_grouping/utils/image_utils.py",
+      "sha256": "872a4507773b9378db9e0fefc90104dc474b27551af18ada73f000a7a00a4ba0",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/utils/loss_utils.py",
+      "release": "reference_code/gaussian_grouping/utils/loss_utils.py",
+      "sha256": "94b3c6efcb9ad8e799152418112bbf3c9e4812bd27922b9bffb1603ffe8a4d56",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/utils/loss_utils0.1.py",
+      "release": "reference_code/gaussian_grouping/utils/loss_utils0.1.py",
+      "sha256": "b0ce08a69de40fec92812a173ab1e2efb1e4977421447b2ab72defc7f1b0b25e",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/utils/loss_utils0.py",
+      "release": "reference_code/gaussian_grouping/utils/loss_utils0.py",
+      "sha256": "b0ce08a69de40fec92812a173ab1e2efb1e4977421447b2ab72defc7f1b0b25e",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/utils/sh_utils.py",
+      "release": "reference_code/gaussian_grouping/utils/sh_utils.py",
+      "sha256": "7d1ff267546390635e6d1f68c4f88c4a8b052482d5c9be1d32f06bc69e9a96e7",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/utils/system_utils.py",
+      "release": "reference_code/gaussian_grouping/utils/system_utils.py",
+      "sha256": "be01c02d3118c5d53808bc04efccd00c35a705a43a87c3583ea2f4752bc48553",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/GaussianModel/config/gaussian_dataset/train.json",
+      "release": "reference_code/gaussian_grouping/config/gaussian_dataset/train.json",
+      "sha256": "64c3f723250bc0dd26c383d466b8e5493ccfe5fa8d3cf13c4aef8053da863e9f",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/3dgrut/crop_gaussian_ply.py",
+      "release": "reference_code/3dgs_proxy/crop_gaussian_ply.py",
+      "sha256": "ee56c822e45accdd313381f42f9567c3bc2b32bd9501cc833b613ba972914cd4",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/3dgrut/split_gaussian_ply_by_plane.py",
+      "release": "reference_code/3dgs_proxy/split_gaussian_ply_by_plane.py",
+      "sha256": "d35a4b6de2aa25879e2d250cb7965e6e64a5e7a5e62a48013f2ca9e0352bdc28",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/3dgrut/gaussian_ply_to_3dgrut_mesh_ply.py",
+      "release": "reference_code/3dgs_proxy/gaussian_ply_to_3dgrut_mesh_ply.py",
+      "sha256": "77e1fed666a064e08187bab61230b41865dd8acd09db7ba0ef821f883996f020",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/3dgrut/gaussian_ply_to_solid_textured_mesh.py",
+      "release": "reference_code/3dgs_proxy/gaussian_ply_to_solid_textured_mesh.py",
+      "sha256": "c58e3706b847a061efa7c97a1c576015901a11ca3fa2d95059740b9e50cbc5aa",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/3dgrut/gaussian_ply_to_splat_mesh.py",
+      "release": "reference_code/3dgs_proxy/gaussian_ply_to_splat_mesh.py",
+      "sha256": "7c818c5a53cc783bf34d5990355493678b221224208c97926dd67e805d0206ed",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/3dgrut/gaussian_ply_to_textured_mesh.py",
+      "release": "reference_code/3dgs_proxy/gaussian_ply_to_textured_mesh.py",
+      "sha256": "18c41c5cf002c5f3ba655fcca3bb52f9a0a4879de54693d9ccf8da668f18dce2",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/3dgrut/ply_to_mesh.py",
+      "release": "reference_code/3dgs_proxy/ply_to_mesh.py",
+      "sha256": "b43fac202418b69f9c5db42bcd091b28ba6294c3b1c3dcc7e0dcf00500f0ec0d",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/3dgrut/02_run_3dgrut_usdz_collision_pipeline.py",
+      "release": "reference_code/3dgs_proxy/02_run_3dgrut_usdz_collision_pipeline.py",
+      "sha256": "151a8dd0cec4a1b20fc168cb76d13b3db1316109b282d77dcef5930eeca2c900",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/3dgrut/run_split_3dgrut_hinge_pipeline.py",
+      "release": "reference_code/3dgs_proxy/run_split_3dgrut_hinge_pipeline.py",
+      "sha256": "7a42bc20f75b9ba3696529e699c67c13b0402ecd64fcbfc7d04d3a05842d292a",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/3dgrut/01_pick_hinge_split_open3d.py",
+      "release": "reference_code/3dgs_proxy/01_pick_hinge_split_open3d.py",
+      "sha256": "114cb45ca2f76496e7a6f54ecafd36f7cd9fa35f1988a0dd410213a58304f83c",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/3dgrut/LICENSE",
+      "release": "reference_code/3dgs_proxy/LICENSE",
+      "sha256": "7339fa418c9ad3e8e12e74ad0fd26a9cc4be8703f9c110728a992b193be85cb2",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/leisaac/tools/run_3dgrut_usdz_collision_pipeline.py",
+      "release": "reference_code/3dgs_proxy/run_3dgrut_usdz_collision_pipeline.py",
+      "sha256": "7f0d485e80385859bb1a59dbf9b98aef60fadd10a6a0b5ce19c75b31f21ee6b9",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/leisaac/tools/create_hinged_usd_assembly.py",
+      "release": "reference_code/3dgs_proxy/create_hinged_usd_assembly.py",
+      "sha256": "8de06c605711090662ee19314e16ee75b66b50abd77fc411a437088b652e3022",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/leisaac/scripts/evaluation/policy_inference.py",
+      "release": "reference_code/leisaac/scripts/evaluation/policy_inference.py",
+      "sha256": "117435d98f2c5387348e05ad6c34d6ba24840349b102ec061ec477d4b789fa2c",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/leisaac/scripts/convert/isaaclab2lerobot.py",
+      "release": "reference_code/leisaac/scripts/convert/isaaclab2lerobot.py",
+      "sha256": "94dc0321a9c34f3b71439eccd90c56574519c9536effcdc6f85be436ab2dc304",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/leisaac/scripts/environments/teleoperation/teleop_se3_agent_hinged.py",
+      "release": "reference_code/leisaac/scripts/environments/teleoperation/teleop_se3_agent_hinged.py",
+      "sha256": "def8f8f39c3f2f53eab1705031633d01ec80e5ce5aeceb7d75f2e71deb90592f",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/leisaac/source/leisaac/leisaac/devices/action_process.py",
+      "release": "reference_code/leisaac/source/leisaac/leisaac/devices/action_process.py",
+      "sha256": "73b5e1da1f9df7a4e5f915f98fd27615041fda5daecde9ecad004ef9eeca9fbe",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/leisaac/source/leisaac/leisaac/policy/base.py",
+      "release": "reference_code/leisaac/source/leisaac/leisaac/policy/base.py",
+      "sha256": "4c219e2342fcb227659662a5c643864f513722da4a2089cbf7f8c5d0e660fe65",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/leisaac/source/leisaac/leisaac/policy/service_policy_clients.py",
+      "release": "reference_code/leisaac/source/leisaac/leisaac/policy/service_policy_clients.py",
+      "sha256": "a8c475d0c9141f646290296bc85f2f19d819b96090782111cda2b16ba9070908",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/leisaac/LICENSE",
+      "release": "reference_code/leisaac/LICENSE",
+      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/gemini_camera/adjust_wipe_trajectory_inward.py",
+      "release": "tools/trajectory_compensation/adjust_wipe_trajectory_inward.py",
+      "sha256": "1a6c33a37e1b2dff704bcff20d587fd9c0ac1c2ca936aedf8b26bdce850beb39",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/gemini_camera/extract_pour_moving_object_trajectory.py",
+      "release": "tools/trajectory_compensation/extract_pour_moving_object_trajectory.py",
+      "sha256": "1e5b2be7475dc0ad670e305db8b286d972b739992f0b338ec022bb341b257704",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    },
+    {
+      "source": "code/gemini_camera/stabilize_bottle_z_depth.py",
+      "release": "tools/trajectory_compensation/stabilize_bottle_z_depth.py",
+      "sha256": "d4444b47e58f0334d94aae4dcc5b45e2c88fb180150746adad54a3ff876604e7",
+      "status": "existing source snapshot; not a verified original experiment checkpoint"
+    }
+  ],
+  "external_checkouts": [
+    {
+      "workspace": "code/GaussianModel",
+      "local_base_commit": "0ab60afed3385b717c985af1d30a20f7b0884c89",
+      "note": "Local checkout identity only; not claimed as the checkpoint used by the paper."
+    },
+    {
+      "workspace": "code/3dgrut",
+      "local_base_commit": "ffa1025ad7c13814527742273afb05ecc53925f3",
+      "note": "Local checkout identity only; not claimed as the checkpoint used by the paper."
+    },
+    {
+      "workspace": "code/leisaac",
+      "local_base_commit": "099a4081b987628ae1009aded2da888314489a12",
+      "note": "Local checkout identity only; not claimed as the checkpoint used by the paper."
+    },
+    {
+      "workspace": "code/lerobot",
+      "local_base_commit": "1add460678729bbd34d7a97f3fb455764f316f86",
+      "note": "Local checkout identity only; not claimed as the checkpoint used by the paper."
+    }
+  ]
+}

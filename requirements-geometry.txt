@@ -1,0 +1,5 @@
+numpy>=1.24
+open3d>=0.18
+scipy>=1.10
+scikit-image>=0.21
+Pillow>=10

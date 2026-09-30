@@ -1,0 +1,64 @@
+{
+  "name": "More from Less available offline examples",
+  "stages": [
+    {
+      "name": "structured_vla",
+      "available": false,
+      "description": "Original structured-VLA training implementation and experiment checkpoints are not bundled."
+    },
+    {
+      "name": "failure_expansion",
+      "available": false,
+      "description": "Original failure sampling, joint acceptance and iterative retraining runner is not bundled."
+    },
+    {
+      "name": "online_compensation",
+      "available": false,
+      "description": "Original asynchronous reference, task-masked IK and shared-QP controller is not bundled."
+    },
+    {
+      "name": "offline_fusion_pour",
+      "available": true,
+      "description": "Offline diagnostic only; not the online 12-D joint controller.",
+      "required_inputs": [
+        "examples/trajectories/pour/generated_pose_xyzrpy.csv",
+        "examples/trajectories/pour/real_retargeted_pose_xyzrpy.csv"
+      ],
+      "command": [
+        "{python}",
+        "-m",
+        "morefromless.trajectory.fuse_trajectories",
+        "--generated",
+        "examples/trajectories/pour/generated_pose_xyzrpy.csv",
+        "--real-retargeted",
+        "examples/trajectories/pour/real_retargeted_pose_xyzrpy.csv",
+        "--out-dir",
+        "outputs/pour_fused_reference",
+        "--real-weight",
+        "0.55"
+      ]
+    },
+    {
+      "name": "offline_fusion_wipe",
+      "available": true,
+      "description": "Offline diagnostic only; not the online 12-D joint controller.",
+      "required_inputs": [
+        "examples/trajectories/wipe/generated_pose_xyzrpy.csv",
+        "examples/trajectories/wipe/real_retargeted_pose_xyzrpy.csv"
+      ],
+      "command": [
+        "{python}",
+        "-m",
+        "morefromless.trajectory.fuse_trajectories",
+        "--generated",
+        "examples/trajectories/wipe/generated_pose_xyzrpy.csv",
+        "--real-retargeted",
+        "examples/trajectories/wipe/real_retargeted_pose_xyzrpy.csv",
+        "--out-dir",
+        "outputs/wipe_fused_reference",
+        "--real-weight",
+        "0.55"
+      ]
+    }
+  ]
+}

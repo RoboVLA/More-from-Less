@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "morefromless-tools"
+version = "0.1.0"
+description = "Offline trajectory utilities accompanying More from Less"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+vision = ["opencv-python>=4.8", "matplotlib>=3.7"]
+geometry = ["open3d>=0.18", "scipy>=1.10", "scikit-image>=0.21", "Pillow>=10"]
+
+[project.scripts]
+morefromless-fuse = "morefromless.trajectory.fuse_trajectories:main"
+
+[tool.setuptools.packages.find]
+include = ["morefromless*"]

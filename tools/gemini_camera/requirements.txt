@@ -1,0 +1,4 @@
+pyorbbecsdk2==2.1.1
+openni==2.3.0
+numpy>=2.1.0
+opencv-python>=4.10.0

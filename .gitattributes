@@ -1,0 +1,5 @@
+# Keep source snapshots byte-identical to the SHA-256 provenance manifest.
+reference_code/** -text
+tools/trajectory_compensation/adjust_wipe_trajectory_inward.py -text
+tools/trajectory_compensation/extract_pour_moving_object_trajectory.py -text
+tools/trajectory_compensation/stabilize_bottle_z_depth.py -text
