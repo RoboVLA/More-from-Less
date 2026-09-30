@@ -1,5 +1,5 @@
 {
-  "version": "v163-anonymous",
+  "version": "v164-anonymous",
   "updated_on": "2026-09-30",
   "title": "More from Less: 3D Gaussian Splatting Digital Twins with Iterative Expansion and Trajectory Compensation for Sparse-Demonstration Bimanual Manipulation",
   "authors": [
@@ -8,9 +8,9 @@
   "abstract_en": "Sparse bimanual demonstrations cover limited object states and contact configurations. More from Less combines structured action prediction, failure-region expansion, and local recovery. A vision–language–action (VLA) policy predicts joint action chunks with shared context and training-only geometric supervision. Object-level 3D Gaussian Splatting supplies appearance assets for physical proxies with separate collision geometry and assigned physics. Policy failures locate regions for virtual rollouts. Only complete trajectories passing task, physics, and safety checks enter real-dominated retraining. During deployment, asynchronous video references provide image-plane targets for current-state mapping and gated fusion. Base and fused actions pass through a shared quadratic program and nonlinear recheck. Across six real-robot task categories, Full Pipeline reaches a four-stage macro-average success rate of 89.00%, compared with 75.83% for Structured Dual-arm VLA. This comparison measures stage-level outcomes of the combined system, rather than complete-task success.",
   "manuscript_status": "Research manuscript; no journal acceptance is claimed",
   "pdf": "paper/anonymous_review.pdf",
-  "pdf_sha256": "f88a11891842dbb1395d35e499411f9a1e0b8917edc4558ce27151e6db1590ae",
+  "pdf_sha256": "5a40313b21cc43237f10f52fa7533208c956ee1c4a1b0be1d7fc4da95a0e994f",
   "source_package": "Anonymous review manuscript",
-  "source_tex_sha256": "1709e997e6b5d44d55fa1e0f25e6b98ab7f012e452c69f139966c0c27b9b26d9",
+  "source_tex_sha256": "74dd684d4a42ff3798a64a7b75461509d1dc8025cecfb46dc5d408a00311cd03",
   "figures": [
     {
       "number": "1",
@@ -132,6 +132,7 @@
   "notes": [
     "Author names, affiliations, contact details, grant identifier, and named contributions are withheld for anonymous review.",
     "Scientific content, experimental values, equations, and references are retained.",
-    "The anonymous GitHub project URL is included at the end of the abstract."
+    "The anonymous GitHub project URL is included at the end of the abstract.",
+    "Resource availability updated to describe the public release and distinguish new reference implementations from historical experimental code."
   ]
 }

@@ -10,8 +10,8 @@
   <meta property="og:image" content="static/media/v162/figure-1.png">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="static/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="static/css/project.css?v=cvpr-20260922">
-  <script defer src="static/js/project.js?v=cvpr-20260922"></script>
+  <link rel="stylesheet" href="static/css/project.css?v=release-20260930">
+  <script defer src="static/js/project.js?v=release-20260930"></script>
 </head>
 <body class="paper-home">
   <a class="skip" href="#abstract">Skip to content</a>
@@ -73,7 +73,7 @@
 <figure class="paper-figure"><a href="static/media/v162/figure-3.png" target="_blank" rel="noopener"><img src="static/media/v162/figure-3.png" alt="Object-level physical proxy and failure-region expansion pipeline" loading="lazy"></a><figcaption>Figure 3 · Visual reconstruction does not infer mass, articulation or contact physics automatically.</figcaption></figure></section>
 
 <section class="method-detail" id="recovery"><h3>Step-Level Trajectory Compensation</h3>
-<p>Video generation takes approximately two minutes and runs asynchronously. Its 2D image targets undergo timestamp and current-state alignment, depth/calibration mapping, task-masked DLS IK and validity checks. Gated actions always pass shared QP filtering and nonlinear rechecks; rejected commands slow or hold execution.</p>
+<p>Kling AI 3.0 generates 2D video references asynchronously, taking approximately two minutes per generation. Its 2D image targets undergo timestamp and current-state alignment, depth/calibration mapping, task-masked DLS IK and validity checks. Gated actions always pass shared QP filtering and nonlinear rechecks; rejected commands slow or hold execution.</p>
 <figure class="paper-figure"><a href="static/media/v162/figure-4.png" target="_blank" rel="noopener"><img src="static/media/v162/figure-4.png" alt="Single online execution chain with asynchronous reference generation and shared safety filtering" loading="lazy"></a><figcaption>Figure 4 · Low risk, waiting or invalid reference sets the fusion weight to zero. This is not a claim of certified safety.</figcaption></figure></section>
 
     </section>
@@ -90,7 +90,9 @@
           <p class="section-intro">Reported values from the manuscript. Stage success and step recovery use different evaluation units.</p>
           <div class="tabs result-tabs" role="tablist" aria-label="Evaluation tables">
             <button id="tab-stages" role="tab" aria-selected="true" aria-controls="panel-stages" data-group="results" data-panel="panel-stages">Stage Success · Table 1</button>
+            <button id="tab-expansion" role="tab" tabindex="-1" aria-selected="false" aria-controls="panel-expansion" data-group="results" data-panel="panel-expansion">Expansion · Table 2</button>
             <button id="tab-steps" role="tab" tabindex="-1" aria-selected="false" aria-controls="panel-steps" data-group="results" data-panel="panel-steps">Step Recovery · Table 4</button>
+            <button id="tab-ablation" role="tab" tabindex="-1" aria-selected="false" aria-controls="panel-ablation" data-group="results" data-panel="panel-ablation">Ablation · Table 6</button>
           </div>
           <div role="tabpanel" id="panel-stages" aria-labelledby="tab-stages" data-group="results">
 <div class="table-scroll"><table>
@@ -169,7 +171,7 @@
 </tr>
 </tbody>
 </table></div>
-<p class="table-note">Mean ± sample SD, %. The macro-average weights four stages equally; it is not end-to-end task success. † Full Pipeline additionally uses virtual expansion and deployment compensation.</p>
+<p class="table-note">Mean ± sample SD, %, across 15 paired units (5 policy seeds × 3 environment seeds). The macro-average weights four stages equally within each unit; it is not end-to-end task success. † Full Pipeline additionally uses virtual expansion and deployment compensation.</p>
 </div>
 
 
@@ -230,6 +232,26 @@
 </div>
 
 
+<div role="tabpanel" id="panel-expansion" aria-labelledby="tab-expansion" data-group="results" hidden>
+<div class="table-scroll"><table><thead><tr><th scope="col">Training setting</th><th scope="col">Expansion strategy</th><th scope="col">Failure guidance</th><th scope="col">Success filtering</th><th scope="col">Simulation success</th><th scope="col">Real-robot success</th></tr></thead><tbody>
+<tr><th scope="row">Sparse Demo</th><td>None</td><td>×</td><td>×</td><td>75.47 ± 2.20</td><td>73.00 ± 3.16</td></tr>
+<tr><th scope="row">No virtual-twin path</th><td>Real-trajectory replay only</td><td>×</td><td>✓</td><td>77.60 ± 2.41</td><td>74.17 ± 3.49</td></tr>
+<tr><th scope="row">Isaac Sim Random Aug.</th><td>Uniform randomization</td><td>×</td><td>✓</td><td>80.67 ± 2.79</td><td>75.67 ± 3.47</td></tr>
+<tr><th scope="row">Uniform Virtual Rollout</th><td>Uniform state sampling</td><td>×</td><td>✓</td><td>84.00 ± 2.62</td><td>78.83 ± 2.81</td></tr>
+<tr><th scope="row">Video Trajectory Aug.</th><td>Generated reference replay</td><td>×</td><td>✓</td><td>81.73 ± 2.12</td><td>78.67 ± 1.86</td></tr>
+<tr class="ours"><th scope="row">Failure-region Expansion</th><td>Boundary-guided sampling</td><td>✓</td><td>✓</td><td>89.20 ± 1.97</td><td>84.33 ± 2.58</td></tr>
+<tr><th scope="row">Failure-region + Residual RL</th><td>Boundary-guided + residual RL</td><td>✓</td><td>✓</td><td>90.27 ± 2.37</td><td>86.00 ± 2.80</td></tr></tbody></table></div>
+<p class="table-note">Mean ± SD, %. Failure-region expansion reaches 84.33% real-robot success, compared with 78.83% for uniform virtual rollout. Residual RL proposes simulation candidates only; all candidates use the same acceptance procedure. These are complete-configuration comparisons, with unmatched data/compute effects unresolved.</p></div>
+<div role="tabpanel" id="panel-ablation" aria-labelledby="tab-ablation" data-group="results" hidden>
+<div class="table-scroll"><table><thead><tr><th scope="col">Variant</th><th scope="col">SV</th><th scope="col">PP</th><th scope="col">FE</th><th scope="col">SF</th><th scope="col">SC</th><th scope="col">Simulation success</th><th scope="col">Real-robot success</th><th scope="col">Step recovery</th><th scope="col">Collision</th></tr></thead><tbody>
+<tr><th scope="row">w/o Structured Dual-arm</th><td>×</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>81.47 ± 2.07</td><td>74.00 ± 3.11</td><td>56.44 ± 3.44</td><td>8.17 ± 1.14</td></tr>
+<tr><th scope="row">w/o Structured Virtual Env.</th><td>✓</td><td>×</td><td>✓</td><td>✓</td><td>✓</td><td>81.87 ± 1.41</td><td>74.00 ± 2.46</td><td>57.56 ± 4.27</td><td>7.17 ± 1.29</td></tr>
+<tr><th scope="row">w/o Boundary Expansion</th><td>✓</td><td>✓</td><td>×</td><td>✓</td><td>✓</td><td>83.73 ± 2.37</td><td>77.50 ± 1.64</td><td>58.89 ± 3.92</td><td>7.33 ± 1.76</td></tr>
+<tr><th scope="row">w/o Success Filtering</th><td>✓</td><td>✓</td><td>✓</td><td>×</td><td>✓</td><td>84.80 ± 1.47</td><td>77.83 ± 2.29</td><td>59.55 ± 4.69</td><td>9.17 ± 1.22</td></tr>
+<tr><th scope="row">w/o Trajectory Compensation</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>×</td><td>88.80 ± 2.11</td><td>78.50 ± 2.07</td><td>31.78 ± 3.96</td><td>5.67 ± 1.14</td></tr>
+<tr class="ours"><th scope="row">Full Model</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>90.67 ± 1.95</td><td>86.17 ± 2.29</td><td>69.56 ± 4.86</td><td>5.17 ± 1.48</td></tr></tbody></table></div>
+<p class="table-note">Mean ± SD, %. SV: structured bimanual VLA; PP: object-level physical proxy; FE: failure-region expansion; SF: successful-trajectory filtering; SC: step compensation. ✓ enabled; × removed or replaced. This table uses the ablation task pool; its rates are not pooled with Tables 1, 2 or 4.</p></div>
+
           <details class="evaluation-notes"><summary>Evaluation and reproducibility notes</summary><p>These are descriptive comparisons. Per-round expansion counts, matched compute budgets, quantitative proxy errors and full online timing records are not included in this release. See the <a href="docs/REPRODUCIBILITY.md">reproducibility notes</a>.</p></details>
         </div>
       </div>
@@ -238,10 +260,11 @@
     <section id="release" class="section narrow code-resources">
       <h2>Code &amp; Resources</h2>
       <p>Visit the <a href="https://github.com/RoboVLA/More-from-Less">GitHub repository</a>, <a href="code.html">source browser</a>, <a href="README.md">README</a>, and <a href="docs/source_manifest.json">source manifest</a>. The release includes offline trajectory examples, object reconstruction and physical-proxy utilities, and simulator interfaces.</p>
-      <p class="availability-note">The original VLA training, iterative expansion and online controller are not complete reproducible releases. Available components and dependencies are documented in the <a href="docs/REPRODUCIBILITY.md">reproducibility notes</a>.</p>
+      <p class="availability-note">The release now includes new reference implementations of structured training, failure-guided expansion and shared-filter control, plus exact recomputation of the saved appendix trajectory CSVs. These additions are not recovered experimental code; original checkpoints and full evaluation logs remain unavailable. Implementation details and dependencies are documented in the <a href="docs/REPRODUCIBILITY.md">reproducibility notes</a>.</p>
       <details class="quickstart"><summary>Run the available examples</summary><pre><code>python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
-python paper_pipeline/run_morefromless_pipeline.py
+python -m morefromless.trajectory.reproduce_appendix
+python paper_pipeline/run_morefromless_pipeline.py --dry-run --include-disabled
 python scripts/serve.py</code></pre></details>
     </section>
 

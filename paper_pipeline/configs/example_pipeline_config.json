@@ -1,63 +1,89 @@
 {
-  "name": "More from Less available offline examples",
+  "name": "More from Less: appendix reproduction and new reference implementations",
+  "historical_experiments_reproducible": false,
   "stages": [
     {
       "name": "structured_vla",
-      "available": false,
-      "description": "Original structured-VLA training implementation and experiment checkpoints are not bundled."
-    },
-    {
-      "name": "failure_expansion",
-      "available": false,
-      "description": "Original failure sampling, joint acceptance and iterative retraining runner is not bundled."
-    },
-    {
-      "name": "online_compensation",
-      "available": false,
-      "description": "Original asynchronous reference, task-masked IK and shared-QP controller is not bundled."
-    },
-    {
-      "name": "offline_fusion_pour",
       "available": true,
-      "description": "Offline diagnostic only; not the online 12-D joint controller.",
-      "required_inputs": [
-        "examples/trajectories/pour/generated_pose_xyzrpy.csv",
-        "examples/trajectories/pour/real_retargeted_pose_xyzrpy.csv"
+      "enabled_by_default": false,
+      "scope": "new_reference_contract_tests",
+      "historical_run_reproduced": false,
+      "description": "New structured-loss/FK/gradient contract tests; requires torch. Does not train an experimental VLA.",
+      "required_modules": [
+        "torch"
       ],
       "command": [
         "{python}",
         "-m",
-        "morefromless.trajectory.fuse_trajectories",
-        "--generated",
-        "examples/trajectories/pour/generated_pose_xyzrpy.csv",
-        "--real-retargeted",
-        "examples/trajectories/pour/real_retargeted_pose_xyzrpy.csv",
-        "--out-dir",
-        "outputs/pour_fused_reference",
-        "--real-weight",
-        "0.55"
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_structured_reference.py",
+        "-v"
       ]
     },
     {
-      "name": "offline_fusion_wipe",
+      "name": "failure_expansion",
       "available": true,
-      "description": "Offline diagnostic only; not the online 12-D joint controller.",
+      "enabled_by_default": false,
+      "scope": "new_reference_contract_tests",
+      "historical_run_reproduced": false,
+      "description": "New expansion and acceptance engine contract tests with analytic fixtures; no Isaac Sim experiment.",
+      "required_modules": [],
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_method_reference.py",
+        "-v"
+      ]
+    },
+    {
+      "name": "online_compensation",
+      "available": true,
+      "enabled_by_default": false,
+      "scope": "new_reference_contract_tests",
+      "historical_run_reproduced": false,
+      "description": "New asynchronous gate/DLS/shared-QP controller contract tests; no robot connected.",
+      "required_modules": [],
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_method_reference.py",
+        "-v"
+      ]
+    },
+    {
+      "name": "appendix_reproduction",
+      "available": true,
+      "enabled_by_default": true,
+      "scope": "saved_offline_curve_reproduction",
+      "description": "Recompute historical time-varying fusion from unchanged G/R inputs and verify every saved pose component.",
       "required_inputs": [
+        "examples/trajectories/pour/generated_pose_xyzrpy.csv",
+        "examples/trajectories/pour/real_retargeted_pose_xyzrpy.csv",
+        "examples/trajectories/pour/fused_pose_xyzrpy.csv",
+        "examples/trajectories/pour/fused_pose_trajectory_xyzrpy.json",
         "examples/trajectories/wipe/generated_pose_xyzrpy.csv",
-        "examples/trajectories/wipe/real_retargeted_pose_xyzrpy.csv"
+        "examples/trajectories/wipe/real_retargeted_pose_xyzrpy.csv",
+        "examples/trajectories/wipe/fused_pose_xyzrpy.csv",
+        "examples/trajectories/wipe/fused_pose_trajectory_xyzrpy.json"
       ],
       "command": [
         "{python}",
         "-m",
-        "morefromless.trajectory.fuse_trajectories",
-        "--generated",
-        "examples/trajectories/wipe/generated_pose_xyzrpy.csv",
-        "--real-retargeted",
-        "examples/trajectories/wipe/real_retargeted_pose_xyzrpy.csv",
-        "--out-dir",
-        "outputs/wipe_fused_reference",
-        "--real-weight",
-        "0.55"
+        "morefromless.trajectory.reproduce_appendix"
       ]
     }
   ]

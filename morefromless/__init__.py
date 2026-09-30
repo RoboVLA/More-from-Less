@@ -1,4 +1,3 @@
 """Utilities for the More from Less research release."""
 
-__all__ = ["trajectory"]
-
+__all__ = ["trajectory", "method"]

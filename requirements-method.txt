@@ -1,0 +1,3 @@
+# Optional differentiable structured training. Choose the appropriate CPU/CUDA
+# wheel from https://pytorch.org/get-started/locally/ for your environment.
+torch>=2.2

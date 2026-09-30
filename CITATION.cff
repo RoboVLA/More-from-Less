@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Please cite the More from Less research manuscript; no publication venue or DOI is claimed."
 title: "More from Less: 3D Gaussian Splatting Digital Twins with Iterative Expansion and Trajectory Compensation for Sparse-Demonstration Bimanual Manipulation"
 type: software
-version: 0.1.0
+version: 0.2.0
 repository-code: "https://github.com/RoboVLA/More-from-Less"
 authors:
   - name: Anonymous Authors

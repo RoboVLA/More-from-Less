@@ -1,10 +1,10 @@
-# 数据与素材
+# 当前数据与素材
 
-- `examples/trajectories/` 保留既有倒水和擦拭离线 CSV/JSON，未重算或替换原示例。
-- `static/media/v162/` 对应当前 v162 英文稿：图 1–4 为稿件中的矢量 PDF 及配套 PNG 预览；图 5–8、A.1–A.4 与 LaTeX 源包中的 PNG 逐字节一致。图注和哈希见 `current_manuscript.json`。
-- `static/media/current/` 和 `static/media/paper/` 是历史资源。旧 A.3 示意响应曲线已从当前论文移除，当前 A.3 为离线轨迹诊断。主页不链接旧曲线。
-- `static/media/experiments/real_*_global.mp4` 是原发布目录内已有的真实操作短片，只用于说明任务场景，不能据此推断补偿激活或成功统计。
-- `paper/anonymous_review.pdf` 是当前匿名英文阅读稿；含作者身份的旧稿仅保留在公开仓库以外。
-- 完整示教、原始评测日志、模型权重、大型场景/点云不在本仓库内，不能根据小样例反推训练/测试规模。
+- `examples/trajectories/` 保存原倒水/擦白板CSV和JSON。本次没有修改这些文件；新增入口将重算结果写入 `outputs/appendix_reproduction/`。
+- `static/media/v162/` 是当前v164稿件继续使用的图1–8、A.1–A.4。版本目录标识图像来源，图像没有因资源说明更新而重绘。
+- 34个历史图片与旧v155快照已经完整归档到公开仓库之外。`static/media/current/`、`static/media/paper/` 不再是发布资源；旧A.3示意响应曲线不再出现在当前文件树。归档哈希见 `historical_assets.json`。
+- `static/media/experiments/real_*_global.mp4` 是已有真实操作短片，仅展示任务交互，不构成补偿触发或恢复结果的同步证据。
+- `paper/anonymous_review.pdf` 是当前v164匿名阅读稿；图注、版本和SHA-256由 `current_manuscript.json` 索引。
+- 完整示教、原始评测日志、模型权重和大型场景/点云不在本仓库中。
 
-表格汇总值来自论文，不由演示脚本生成。方法示意、生成参考与实机观测按图注区分。论文、媒体及实验数据不自动继承代码许可证。
+新增方法代码的解析测试样例不是论文实验数据。表格汇总值直接取自论文，不能通过测试生成。媒体、论文与实验数据不自动适用代码许可证。

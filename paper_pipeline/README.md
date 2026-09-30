@@ -1,5 +1,10 @@
-# 可用流程入口
+# 流程入口
 
-在仓库根目录运行 `python paper_pipeline/run_morefromless_pipeline.py`，执行倒水与擦拭的离线融合示例。
+```bash
+python paper_pipeline/run_morefromless_pipeline.py
+python paper_pipeline/run_morefromless_pipeline.py --dry-run --include-disabled
+```
 
-`--dry-run --include-disabled` 展示完整清单。当前缺失的 VLA 训练、失败区域迭代和在线控制阶段不配置虚构命令，也不能通过 `--include-disabled` 强行运行。配置中的示例参数不是论文训练配置。详见 `../docs/REPRODUCIBILITY.md`。
+默认只运行 `appendix_reproduction`，按历史时变融合和平滑过程重算倒水与擦白板曲线，并逐分量核对原CSV。失败即返回非零状态，原数据不改动。
+
+`--stage structured_vla`、`--stage failure_expansion`、`--stage online_compensation` 分别运行新增参考模块的工程测试。第一项需安装 `requirements-method.txt`。配置明确标记 `scope: new_reference_contract_tests` 和 `historical_run_reproduced: false`；测试不替代原训练或实机评测。实际训练/模拟/控制适配器要求见 `../docs/METHOD_REFERENCE.md`。

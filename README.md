@@ -8,7 +8,7 @@ Anonymous Authors · Anonymous review version
 
 本地验证记录：[docs/VALIDATION.md](docs/VALIDATION.md)。
 
-本仓库整理论文的现有代码与配套材料。当前主页与匿名英文 PDF 基于 **v162** 稿件制作，公开阅读稿为 **v163 匿名版**，来源和文件哈希见 [当前稿件清单](docs/current_manuscript.json)。已有汇总实验数据保持原样。原始训练日志与部分运行实现已不在当前项目中，因此本仓库不宣称可以一键重现 Table 1–8。
+本仓库整理论文的现有代码与配套材料。当前公开阅读稿为 **v164 匿名版**；实验内容沿用 v162，资源获取说明与本次代码发布同步，来源和文件哈希见 [当前稿件清单](docs/current_manuscript.json)。已有汇总实验数据保持原样。本次新增结构化训练、失败区域拓展与在线过滤的参考实现，以及附录曲线复现入口。新增实现不是恢复的历史实验代码；原始检查点和运行日志缺失，因此不能一键重现 Table 1–8。详细接口与验证范围见 [方法参考实现](docs/METHOD_REFERENCE.md)。
 
 ## 方法
 
@@ -22,14 +22,15 @@ Anonymous Authors · Anonymous review version
 
 | 路径 | 内容 | 当前状态 |
 |---|---|---|
-| `morefromless/trajectory/` | CSV/JSON 位姿读写、重采样和加权融合 | 可用示例验证；仅离线诊断 |
+| `morefromless/method/` | 可微关系监督/FK、训练入口、迭代验收引擎、异步参考/DLS/共享QP控制 | 新增参考实现；需要实际主干、几何、仿真和设备适配器 |
+| `morefromless/trajectory/` | 位姿读写、通用融合、附录历史处理过程重算 | 附录72/75点逐分量验证；仅离线诊断 |
 | `examples/trajectories/{pour,wipe}/` | 已有生成/重定向/融合轨迹 | 保留原始示例，不是新增实机数据 |
 | `reference_code/gaussian_grouping/` | 已有对象级重建训练、渲染及支持模块快照 | 需上游 CUDA/数据环境；不是 VLA 训练代码 |
 | `reference_code/3dgs_proxy/` | PLY 裁剪、分割、碰撞网格、USD/铰链组装 | 需 Open3D / 3DGRUT / USD 等外部环境 |
 | `reference_code/leisaac/` | 已有推理、动作接口、示教格式转换及铰链交互入口 | 需完整 leisaac / Isaac Sim 环境 |
 | `tools/gemini_camera/` | 已有 RGB-D 相机采集与调参工具 | 需硬件、驱动和 SDK |
 | `tools/trajectory_compensation/` | 已有视频与轨迹处理脚本 | 历史离线工具，含场景默认路径 |
-| `paper_pipeline/` | 可用阶段清单、倒水/擦拭离线示例运行器 | 不可用研究阶段明确报错，不用虚构命令占位 |
+| `paper_pipeline/` | 默认执行附录复现；可选运行方法参考实现检查 | 工程检查与历史实验复现分别标注 |
 | `static/media/v162/` | 当前 v162 论文插图 | 图 1–4 为对应矢量 PDF 及预览，其他图与 LaTeX 资源一致 |
 | `index.html`, `code.html`, `static/` | 静态学术项目主页 | 可本地预览；适配 GitHub Pages 子路径 |
 
@@ -48,9 +49,11 @@ python paper_pipeline/run_morefromless_pipeline.py --dry-run --include-disabled
 python paper_pipeline/run_morefromless_pipeline.py
 ```
 
-最后一条命令运行倒水与擦拭两组离线融合，输出到 `outputs/pour_fused_reference/` 和 `outputs/wipe_fused_reference/`。输出不覆盖随仓库保存的示例。可选安装包：`python -m pip install -e .`。
+最后一条命令按历史时变权重和平滑过程重算附录曲线，输出到 `outputs/appendix_reproduction/{pour,wipe}/`，逐分量核对保存的 F；不覆盖示例。也可直接运行 `python -m morefromless.trajectory.reproduce_appendix`。可选安装包：`python -m pip install -e .`。
 
-单独处理轨迹：
+安装 `requirements-method.txt` 后可验证 PyTorch 梯度和结构化训练入口。可选阶段 `--stage structured_vla / failure_expansion / online_compensation` 运行参考模块工程检查；实际训练接入方式见 [METHOD_REFERENCE.md](docs/METHOD_REFERENCE.md)，这些检查不产生论文实验结果。
+
+通用固定权重融合示例（与附录历史处理过程不同）：
 
 ```bash
 python -m morefromless.trajectory.fuse_trajectories --generated examples/trajectories/pour/generated_pose_xyzrpy.csv --real-retargeted examples/trajectories/pour/real_retargeted_pose_xyzrpy.csv --out-dir outputs/pour_demo --real-weight 0.55
@@ -66,13 +69,13 @@ python scripts/serve.py
 
 打开 **http://127.0.0.1:18765/**。地址仅在本机服务运行时有效。也可直接用浏览器打开 `index.html`；内置代码查看器需 HTTP 服务。此脚本只监听本机，隐藏 `.git` 和目录列表，不执行部署。服务独占所选端口；若端口已占用，使用 `--port` 另选空闲端口，不终止其他项目的服务。
 
-主页采用 CVPR 常见论文项目页风格：完整题名居中、深色资源按钮、宽幅双视频，以及 Abstract—Method Overview—Experiments—Code & Resources—BibTeX 的阅读顺序。三部分方法图连续展示，实验表格可切换，手机端视频自动改为单列。版式参考 Nerfies / Academic Project Page Template，使用本地 CSS/JS，不依赖 CDN；这只是版式说明，不表示会议录用。模板来源与许可说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。当前主页使用 `static/media/v162/` 和 `paper/anonymous_review.pdf`。实名旧稿与发布历史仅保留在本地非公开备份中。
+主页采用 CVPR 常见论文项目页风格：完整题名居中、深色资源按钮、宽幅双视频，以及 Abstract—Method Overview—Experiments—Code & Resources—BibTeX 的阅读顺序。三部分方法图连续展示，表 1、2、4、6 可切换，手机端视频自动改为单列。版式参考 Nerfies / Academic Project Page Template，使用本地 CSS/JS，不依赖 CDN；这只是版式说明，不表示会议录用。模板来源与许可说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。当前主页使用 `static/media/v162/` 中未改动的论文插图和 `paper/anonymous_review.pdf`。旧图与 v155 快照已归档到公开仓库之外；公开文件清单只保留当前稿件资源。
 
 ## 依赖与复现边界
 
 可运行轨迹模块只需要 NumPy。视频诊断的额外依赖见 `requirements-vision.txt`；几何工具见 `requirements-geometry.txt`。训练/仿真需单独按 [reference_code/README.md](reference_code/README.md) 配置上游环境，不能由普通 `pip install` 自动得到原始实验系统。
 
-当前未包含已核验的结构化 VLA 原始训练实现、检查点、失败区域迭代与验收运行器、在线视频—IK—共享 QP 控制器以及原始逐回合评测日志。已存在的通用库和接口不能替代这些实现。数据划分、硬件及动作接口边界见 [复现说明](docs/REPRODUCIBILITY.md)。
+参考实现已覆盖结构化训练目标、失败区域迭代验收和在线视频参考—IK—共享QP的控制逻辑；真实模型、场景、跟踪和硬件仍需通过显式接口接入。原实验检查点、训练配置与逐回合日志未恢复，工程测试不能替代原实验验证。数据划分、硬件及动作接口边界见 [复现说明](docs/REPRODUCIBILITY.md)。
 
 ## GitHub 仓库与主页
 

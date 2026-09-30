@@ -1,0 +1,146 @@
+{
+  "status": "Archived outside the public release; not current manuscript evidence",
+  "archived_on": "2026-09-30",
+  "files": [
+    {
+      "former_path": "static/media/current/figure-1.png",
+      "sha256": "8ead779d88af0822b9f7ab9a3b1e60be06fe10d6601b8a35f4a5fe61f13f30c5"
+    },
+    {
+      "former_path": "static/media/current/figure-2.png",
+      "sha256": "9b61d540849a8a3d7a79173beecce5f818ad457f8a691b78d3848134b0434e62"
+    },
+    {
+      "former_path": "static/media/current/figure-3.png",
+      "sha256": "09090a2b418f598244f92c2cba11144f865ad9dfca5559e1119902c6e4514fe0"
+    },
+    {
+      "former_path": "static/media/current/figure-4.png",
+      "sha256": "1c4de45b24df834fd7bf0f6f235cc6003935b26b54a96eb56eabea6d2817d558"
+    },
+    {
+      "former_path": "static/media/current/figure-5.png",
+      "sha256": "6069d57bd952f141c45b138a6930b87157b5f3ce88f21169c3de99b6f30b51e3"
+    },
+    {
+      "former_path": "static/media/current/figure-6.png",
+      "sha256": "b2d7bb1fbf17224c6893356ff68e2dd2874c3b8161ebdba87d3b84a2c8287917"
+    },
+    {
+      "former_path": "static/media/current/figure-7.png",
+      "sha256": "bfa0003ea9fd10524c828ac8d443e23736dbd1030bb25fd35994b98d864abdd5"
+    },
+    {
+      "former_path": "static/media/current/figure-8.png",
+      "sha256": "d39e001ea6691f3377386ad7db21dbbe604c2e945b992c456c74ad9e8f36e9b5"
+    },
+    {
+      "former_path": "static/media/current/figure-A.1.png",
+      "sha256": "32a9d68c871421f80730013e9c8a4f41e2150d60d521b7af8bc21aba73ed7743"
+    },
+    {
+      "former_path": "static/media/current/figure-A.2.png",
+      "sha256": "f18cee7af44e2110f8633e0bf3ce44d21d01ac54a3d4305ad7457466fcb99f11"
+    },
+    {
+      "former_path": "static/media/current/figure-A.3.png",
+      "sha256": "506447068e9303969159d3a67e8fa921d7e853c2206e0f9be5cda5301f38cdc7"
+    },
+    {
+      "former_path": "static/media/current/figure-A.4.png",
+      "sha256": "35f48edf003df119e093af4331fe1499a9cde7f9382a005eb114dd52d90089b2"
+    },
+    {
+      "former_path": "static/media/current/figure-A.5.png",
+      "sha256": "406147bff55e6b1c43d23ad6fac6078ef9d7121c84a83b8fc42bee76d719dd22"
+    },
+    {
+      "former_path": "static/media/paper/data_bimanual_task_overview.png",
+      "sha256": "f79ecfa1689678e2a4cca35dcebb09eea92dd1734b922f10e58b8a92ce20bd5f"
+    },
+    {
+      "former_path": "static/media/paper/data_object_3dgs_scene_overview.png",
+      "sha256": "a2f6cf534923c28d71f3a56040c3c27cab0fb6367bc560d656ee206716b5881f"
+    },
+    {
+      "former_path": "static/media/paper/fig01_overall_framework.png",
+      "sha256": "3df9dd5cd7ee8bf3178188bd5ea5da05e9f94ef68a5762a5d9a1350e11004e2d"
+    },
+    {
+      "former_path": "static/media/paper/fig02_structured_vla.png",
+      "sha256": "708e629beef2a5e4973eacb65a8cdb36134ed420d737a342780a1fe8fc9f1f27"
+    },
+    {
+      "former_path": "static/media/paper/fig03_3dgs_proxy.png",
+      "sha256": "39b759fcb7027249ab6942de6306f69c7a60aa6baf988f3fd9abcee5b461816c"
+    },
+    {
+      "former_path": "static/media/paper/fig04_trajectory_compensation_method.png",
+      "sha256": "ca54cdfecd6281550b3bfbbb3e7e6db1aac67d7acf9297946897b4993b21ab65"
+    },
+    {
+      "former_path": "static/media/paper/fig06a_task_suite.png",
+      "sha256": "c9c07f00498dcb5751510524620c1dae8c49245be341d2942520b62cbe1b25d6"
+    },
+    {
+      "former_path": "static/media/paper/fig06_dataset_protocol.png",
+      "sha256": "5fd37cd9ce148838591e1debdbaf60ded83478306ceeaf8ecd8f17bb7f94977a"
+    },
+    {
+      "former_path": "static/media/paper/fig07a_main_quantitative_results.png",
+      "sha256": "47c1773cfd1c84a4d1ee04194c637b5b5fcb9f7c1c0cd96d9f0a6e7dc231ba8b"
+    },
+    {
+      "former_path": "static/media/paper/fig07_sparse_demo_execution.png",
+      "sha256": "c6a7c4d1581064d04c12e128956235697022a510d91cb9feb07728e9804f752b"
+    },
+    {
+      "former_path": "static/media/paper/fig08a_physical_proxy_validation.png",
+      "sha256": "d149ab35069cea57e930af793428c037f676102537ec03dbf115cbe4131636d0"
+    },
+    {
+      "former_path": "static/media/paper/fig08_structured_virtual_reconstruction.png",
+      "sha256": "0f96098ad914d9e158d98c64e8c3b3813becdf3cc4103e22db753e43661ae7c7"
+    },
+    {
+      "former_path": "static/media/paper/fig09a_virtual_expansion_sim2real.png",
+      "sha256": "8d7c72c1f39cc3514e84cf7a2e27b54dfb60a4abade459c949fc29eedfefb40e"
+    },
+    {
+      "former_path": "static/media/paper/fig09_failure_region_expansion.png",
+      "sha256": "3a89147620375e9ceb5b6cd3f888c0657128fcfc0a9a7a67ddf310f9bce95a4b"
+    },
+    {
+      "former_path": "static/media/paper/fig10a_step_level_compensation_results.png",
+      "sha256": "00702d6f12e54b2a993a852cb35383eef14ce6b7ef6c68995c7bb922838ee2e2"
+    },
+    {
+      "former_path": "static/media/paper/fig10_real_failure_compensation.png",
+      "sha256": "061acd47296e6ab09bef021e23cb92babe0f095c38d7c30cf2ece6fb4d615493"
+    },
+    {
+      "former_path": "static/media/paper/fig11_ablation_sensitivity.png",
+      "sha256": "b341db3f20c2576ce4db454714159cb517faeb54ab015587d4d0121f75fbffad"
+    },
+    {
+      "former_path": "static/media/paper/fig12_safety_failure_analysis.png",
+      "sha256": "0246028d8971278ac4bcd856bc29ceace7642a477d5824fd512a10dc97a0a2a4"
+    },
+    {
+      "former_path": "static/media/paper/fig13a_data_efficiency.png",
+      "sha256": "41240096a363d0458774baac438fb9b0a8d306a617e0be60a139d6566336479d"
+    },
+    {
+      "former_path": "static/media/paper/fig13c_runtime_trigger.png",
+      "sha256": "e0ab011030d59dfe7649bb6bcb2bd9b91c6607eea6519604131466e4f8aaf0d7"
+    },
+    {
+      "former_path": "static/media/paper/fig13_robustness_perturbations.png",
+      "sha256": "4f1e2d408931660fabc779fcee27a6192b93f72938ce0a78e8240ef92c40e78b"
+    },
+    {
+      "former_path": "docs/manuscript_snapshot.json",
+      "sha256": "c98cfa567c801958eba4a075d7fa67ec8cb78d9ca440dcced54720033afbc4b7"
+    }
+  ]
+}
