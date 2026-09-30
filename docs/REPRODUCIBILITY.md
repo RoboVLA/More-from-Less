@@ -1,18 +1,20 @@
-# 复现范围与数据语义
+# Reproducibility and evidence scope
 
-更新：2026-09-30。当前阅读稿为 v164 匿名版，实验数据沿用 v162。代码发布包含保留的来源快照、新增方法参考实现和可核对的附录处理入口。
+Updated 2026-09-30. The reference manuscript is v164; its experimental results and figures are retained from v162. This release combines retained source snapshots, new method reference implementations, and a verifiable appendix-processing entry point.
 
-| 层次 | 可以运行/核对的内容 | 尚不能据此复现的内容 |
+| Component | What can be run or checked | What this does not reproduce |
 |---|---|---|
-| 附录离线诊断 | G/R输入重算时变融合、平滑和倒水深度；全部72/75点对齐原F CSV | 在线风险、参考采用和实机恢复 |
-| 结构化训练参考 | 共享几何映射、归一化、固定上下文、损失梯度、训练循环/FK | 原VLA检查点、示教集、历史损失参数和Table 1结果 |
-| 失败拓展参考 | 失败发现、局部采样、完整成功轨迹联合验收、组权重、逐轮记录 | 原Isaac Sim运行、原始候选/接受数量和Table 2–3结果 |
-| 在线控制参考 | 异步参考、任务掩码DLS、门控、共享QP及非线性复检调用顺序 | 原跟踪器配置、校准几何、设备驱动、原控制频率和Table 4–8结果 |
-| 来源代码快照 | 重建、物理代理、相机与仿真接口，来源哈希保留 | 完整依赖环境、原始训练系统 |
+| Offline appendix diagnostics | Time-varying fusion, smoothing and pouring depth from G/R; all 72/75 points match saved F CSVs | Online risk, reference adoption or robot recovery |
+| Structured-training reference | Shared geometric mapping, normalization, detached context, gradients, training loop and FK | Original checkpoint, demonstrations, loss settings or Table 1 |
+| Expansion reference | Failure discovery, local sampling, joint acceptance of complete successful trajectories, group weighting and iteration records | Original Isaac Sim runs, candidate/acceptance counts or Tables 2–3 |
+| Control reference | Asynchronous references, task-masked DLS, gating, shared QP and nonlinear-check ordering | Original tracker settings, calibrated geometry, drivers, control frequency or Tables 4–8 |
+| Source snapshots | Reconstruction, physical proxies, camera and simulator interfaces with source hashes | Complete upstream environments or the original training system |
 
-实现路径、明确接口和命令见 [METHOD_REFERENCE.md](METHOD_REFERENCE.md)。新参考代码采用解析工程样例测试，不产生实验成功率，也不冒充历史实现。论文报告值作为报告值保留；原始日志缺失不等于数据错误。
+See [method interfaces and commands](METHOD_REFERENCE.md). Analytic engineering fixtures do not produce experimental success rates. Reported manuscript values remain reported values; missing original logs are not evidence that those values are incorrect.
 
-## 命令与依赖
+## Commands
+
+From the repository root:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -22,12 +24,12 @@ python -m pip install -r requirements-method.txt
 python -m unittest discover -s tests -v
 ```
 
-轻量处理、拓展与控制参考只依赖NumPy；可微关系监督/FK和训练依赖PyTorch。几何、GPU、相机和Isaac Sim快照需单独配置上游环境，本轮没有运行真实训练或实机流程。
+Lightweight processing, expansion and control references use NumPy. Differentiable supervision/FK and training use PyTorch. Geometry, GPU, camera and Isaac Sim snapshots need separately configured environments. Validation did not run robot experiments or recover the original training runs.
 
-## 输入与证据
+## Inputs and interpretation
 
-策略前向输入仅为同步三视角RGB、语言、关节状态，输出32×12绝对关节目标，每臂5个驱动关节加夹爪。接触/角色是固定训练上下文；位姿与距离关系提供可微监督。深度参与代理尺度、参考映射和几何检查，不新增到VLA前向输入。
+Policy inputs are synchronized three-view RGB, language and joint states. Output is 32 × 12 absolute joint targets, with five driven joints and one gripper per arm. Contact/role are fixed training context; pose/distance relations provide differentiable supervision. Depth supports proxy scaling, reference mapping and geometry checks, not additional VLA inference inputs.
 
-离线6D相机系轨迹不是12D关节动作。其深度由运动层建模，内参为估计值；R参与构造F，F到R距离减小仅是内部一致性描述。图像/视频保留各自来源含义。
+Offline 6-D camera-frame trajectories are not 12-D joint actions. Depth is modeled and intrinsics are estimated. R participates in constructing F, so reduced F-to-R distance describes internal consistency. Videos retain their documented source meanings.
 
-主页表1、2、4、6取自当前论文；不同表使用不同评测单位/任务池。Table 1–8汇总值仍见公开PDF，原始逐回合日志无法由汇总表反推。完整旧v155快照和旧图已移出公开发布，当前资源由 `current_manuscript.json` 唯一索引。
+Website Tables 1, 2, 4 and 6 reproduce the manuscript's summary values. Their evaluation units/task pools differ; Table 1 summarizes 15 paired units. Raw episodes cannot be reconstructed from these aggregates. The [asset manifest](current_manuscript.json) identifies current figures. Historical figures and the old v155 snapshot are no longer in the published file tree. The manuscript link is temporarily hidden from the website.

@@ -34,13 +34,36 @@ document.getElementById('copy-citation')?.addEventListener('click',async()=>{
 });
 if(document.getElementById('file-content')){
   const links=[...document.querySelectorAll('[data-source]')];
+  let requestNumber=0;
   async function show(path){
     if(!links.some(a=>a.dataset.source===path))return;
+    const request=++requestNumber;
+    const content=document.getElementById('file-content');
+    const status=document.getElementById('source-status');
     document.getElementById('source-title').textContent=path;
-    const download=document.getElementById('source-download');download.href=path;
-    try{const response=await fetch(path);if(!response.ok)throw Error(response.status);document.getElementById('file-content').textContent=await response.text();}
-    catch{document.getElementById('file-content').textContent='Start the local server to browse source files: python scripts/serve.py';}
+    document.getElementById('source-download').href=path;
+    document.getElementById('source-github').href='https://github.com/RoboVLA/More-from-Less/blob/main/'+path;
+    links.forEach(a=>{if(a.dataset.source===path)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});
+    content.textContent='Loading source…';status.textContent='';
+    try{
+      const response=await fetch(path);
+      if(!response.ok)throw Error('HTTP '+response.status);
+      const text=await response.text();
+      if(request!==requestNumber)return;
+      content.textContent=text;
+    }catch(error){
+      if(request!==requestNumber)return;
+      content.textContent='';
+      status.textContent=location.protocol==='file:'
+        ? 'Use an HTTP preview server: python scripts/serve.py'
+        : 'This file could not be loaded. Retry, or use View on GitHub. ('+error.message+')';
+    }
   }
-  links.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();show(a.dataset.source);}));
-  show('README.md');
+  links.forEach(a=>a.addEventListener('click',e=>{
+    if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
+    e.preventDefault();history.replaceState(null,'','#'+encodeURIComponent(a.dataset.source));show(a.dataset.source);
+  }));
+  function selectedPath(){try{return decodeURIComponent(location.hash.slice(1));}catch{return '';}}
+  window.addEventListener('hashchange',()=>show(selectedPath()));
+  const initial=selectedPath();show(links.some(a=>a.dataset.source===initial)?initial:'README.md');
 }

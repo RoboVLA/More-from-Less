@@ -1,9 +1,20 @@
-# 匿名审阅版本与项目主页
+# Release and hosting
 
-正式主页：[More from Less](https://robovla.github.io/More-from-Less/)。代码仓库：[More-from-Less](https://github.com/RoboVLA/More-from-Less)。GitHub Pages 从 `main` 分支根目录发布。
+- Public website: [robovla.github.io/More-from-Less](https://robovla.github.io/More-from-Less/).
+- Repository: [RoboVLA/More-from-Less](https://github.com/RoboVLA/More-from-Less).
+- Clone: `git clone https://github.com/RoboVLA/More-from-Less.git`.
+- GitHub Pages publishes the root of `main`. Site assets use relative paths so the project subdirectory works correctly.
 
-- 当前公开 PDF 为 `paper/anonymous_review.pdf`，已隐藏作者姓名、单位、邮箱、资助编号及具名贡献声明；摘要附正式项目页地址。
-- 主页、README、CITATION 和公开元数据使用匿名署名。公开分支采用匿名提交记录，历史实名材料保留在仓库以外的本地备份。
-- 实验数据、公式、参考文献与第三方许可证保留。第三方作者的学术引用和必要版权署名不属于本论文作者身份披露。
-- 本地运行 `python scripts/serve.py`，访问 `http://127.0.0.1:18765/`；不要操作其他项目的服务。
-- 后续更新应继续使用匿名提交身份，不要将含实名历史的旧分支合并回公开分支。
+The website temporarily omits the manuscript download entry. The retained anonymous PDF is unchanged; hiding a button does not revoke access to previously published files or URLs.
+
+Current project pages, documentation and public manuscript metadata omit author names, affiliations and contact details. Current main-branch commits use an anonymous identity. This does not guarantee that provider caches, historical commit URLs or contributor records are anonymous. Third-party citations and required copyright notices are retained.
+
+## Local preview
+
+```bash
+python scripts/serve.py --port 18765
+```
+
+Use the loopback URL printed in the terminal only on the machine running the server. It is not a shareable public project URL. If occupied, choose another port; do not stop unrelated services. The server binds to loopback, blocks hidden paths and directory listings, and does not deploy.
+
+Use an anonymous commit identity for future public updates. Do not merge old author-identifying history into the review branch. Keep private backups outside the public repository.

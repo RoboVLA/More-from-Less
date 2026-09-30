@@ -1,9 +1,9 @@
-# 历史离线视频与轨迹工具
+# Historical offline video and trajectory tools
 
-本目录保留实际存在的视频处理、深度诊断、重定向和加权融合代码，新增整理的文件见 `../../docs/source_manifest.json`。
+This directory retains existing video-processing, depth-diagnostic, retargeting and weighted-fusion scripts. Per-file provenance is recorded in the [source manifest](../../docs/source_manifest.json).
 
-它们用于离线诊断，不能视为当前论文第 3.3 节的在线二维参考—当前状态对齐—任务掩码 IK—共享 QP 实现。生成深度、手工图像处理和融合后的轨迹也不等于实机测量或新的评测数据。
+These are offline tools, not the online image-reference/alignment/masked-IK/shared-QP pipeline of Section 3.3. Generated depth, manual image processing and fused trajectories are not real-robot measurements or new evaluation data.
 
-原脚本含 Data 目录、场景名称和编译/视频工具默认路径。使用前阅读文件的参数与依赖，在单独工作目录设置自己的输入和输出。不会由默认示例运行器启动相机或机器人。
+Original scripts contain scene-specific filenames, Data directories, and compiler/video-tool defaults, including original-language strings. Inspect each script's arguments and dependencies and supply your own inputs in a separate working directory. The default example runner does not start a camera or robot.
 
-无需原始视频的轻量示例：在仓库根目录运行 `python paper_pipeline/run_morefromless_pipeline.py`。视频依赖可安装 `requirements-vision.txt`。不改变这些历史脚本的算法来迎合当前论文描述。
+For an example that does not need source videos, run `python paper_pipeline/run_morefromless_pipeline.py` from the repository root. Optional video dependencies are in [requirements-vision.txt](../../requirements-vision.txt). Historical algorithms are retained without modifying them to fit the current manuscript narrative.

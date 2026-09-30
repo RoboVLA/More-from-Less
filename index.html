@@ -7,11 +7,13 @@
   <meta name="description" content="Structured bimanual learning, failure-guided digital-twin expansion, and state-aligned trajectory compensation from sparse demonstrations.">
   <meta name="citation_title" content="More from Less: 3D Gaussian Splatting Digital Twins with Iterative Expansion and Trajectory Compensation for Sparse-Demonstration Bimanual Manipulation">
   <meta property="og:title" content="More from Less: 3D Gaussian Splatting Digital Twins with Iterative Expansion and Trajectory Compensation for Sparse-Demonstration Bimanual Manipulation">
-  <meta property="og:image" content="static/media/v162/figure-1.png">
+  <meta property="og:image" content="https://robovla.github.io/More-from-Less/static/media/v162/figure-1.png">
+  <meta property="og:url" content="https://robovla.github.io/More-from-Less/">
+  <link rel="canonical" href="https://robovla.github.io/More-from-Less/">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="static/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="static/css/project.css?v=release-20260930">
-  <script defer src="static/js/project.js?v=release-20260930"></script>
+  <link rel="stylesheet" href="static/css/project.css?v=english-20260930">
+  <script defer src="static/js/project.js?v=english-20260930"></script>
 </head>
 <body class="paper-home">
   <a class="skip" href="#abstract">Skip to content</a>
@@ -22,8 +24,8 @@
     <h1><span class="paper-name">More from Less:</span> 3D Gaussian Splatting Digital Twins with Iterative Expansion and Trajectory Compensation for Sparse-Demonstration Bimanual Manipulation</h1>
     <p class="author-note">Anonymous review version</p>
     <div class="resources" aria-label="Research resources">
-        <a class="button resource-button" href="paper/anonymous_review.pdf"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg><span>Paper</span></a>
         <a class="button resource-button" href="code.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg><span>Code</span></a>
+        <a class="button resource-button" href="https://github.com/RoboVLA/More-from-Less"><span>GitHub</span></a>
         <a class="button resource-button" href="#demos"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14v18H5z"/><path d="m10 8 5 4-5 4z"/></svg><span>Videos</span></a>
         <a class="button resource-button" href="#citation"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H7c-2 0-2 2-2 4v1c0 2-1 3-2 3 1 0 2 1 2 3v1c0 2 0 4 2 4h2M15 4h2c2 0 2 2 2 4v1c0 2 1 3 2 3-1 0-2 1-2 3v1c0 2 0 4-2 4h-2"/></svg><span>BibTeX</span></a>
     </div>
@@ -53,7 +55,6 @@
       <div class="narrow">
         <h2>Abstract</h2>
         <p class="abstract">Sparse bimanual demonstrations cover limited object states and contact configurations. More from Less combines structured action prediction, failure-region expansion, and local recovery. A vision–language–action (VLA) policy predicts joint action chunks with shared context and training-only geometric supervision. Object-level 3D Gaussian Splatting supplies appearance assets for physical proxies with separate collision geometry and assigned physics. Policy failures locate regions for virtual rollouts. Only complete trajectories passing task, physics, and safety checks enter real-dominated retraining. During deployment, asynchronous video references provide image-plane targets for current-state mapping and gated fusion. Base and fused actions pass through a shared quadratic program and nonlinear recheck. Across six real-robot task categories, Full Pipeline reaches a four-stage macro-average success rate of 89.00%, compared with 75.83% for Structured Dual-arm VLA. This comparison measures stage-level outcomes of the combined system, rather than complete-task success.</p>
-        <details class="chinese"><summary>中文摘要</summary><p lang="zh-CN">稀疏双臂示教对对象状态和接触构型的覆盖有限。More from Less 将结构化动作预测、失败区域拓展与局部恢复相结合。视觉—语言—动作（VLA）策略基于共享上下文预测联合动作块，几何关系监督仅用于训练。对象级 3D Gaussian Splatting 为物理代理提供外观资产，碰撞几何与物理参数分别建模。策略失败用于定位虚拟试运行区域，只有通过任务、物理和安全检查的完整轨迹才进入真实数据主导的再训练。部署时，异步视频参考提供图像平面目标，经当前状态映射与门控融合形成动作；基础动作和融合动作均通过共享二次规划与非线性复检。在六类实机任务中，完整系统的四阶段宏平均成功率为 89.00%，结构化双臂 VLA 为 75.83%。这一比较反映组合系统的阶段级结果，不等同于完整任务成功率。</p></details>
 
       </div>
     </section>
@@ -252,16 +253,18 @@
 <tr class="ours"><th scope="row">Full Model</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>90.67 ± 1.95</td><td>86.17 ± 2.29</td><td>69.56 ± 4.86</td><td>5.17 ± 1.48</td></tr></tbody></table></div>
 <p class="table-note">Mean ± SD, %. SV: structured bimanual VLA; PP: object-level physical proxy; FE: failure-region expansion; SF: successful-trajectory filtering; SC: step compensation. ✓ enabled; × removed or replaced. This table uses the ablation task pool; its rates are not pooled with Tables 1, 2 or 4.</p></div>
 
-          <details class="evaluation-notes"><summary>Evaluation and reproducibility notes</summary><p>These are descriptive comparisons. Per-round expansion counts, matched compute budgets, quantitative proxy errors and full online timing records are not included in this release. See the <a href="docs/REPRODUCIBILITY.md">reproducibility notes</a>.</p></details>
+          <details class="evaluation-notes"><summary>Evaluation and reproducibility notes</summary><p>These are descriptive comparisons. Per-round expansion counts, matched compute budgets, quantitative proxy errors and full online timing records are not included in this release. See the <a href="https://github.com/RoboVLA/More-from-Less/blob/main/docs/REPRODUCIBILITY.md">reproducibility notes</a>.</p></details>
         </div>
       </div>
     </section>
 
     <section id="release" class="section narrow code-resources">
       <h2>Code &amp; Resources</h2>
-      <p>Visit the <a href="https://github.com/RoboVLA/More-from-Less">GitHub repository</a>, <a href="code.html">source browser</a>, <a href="README.md">README</a>, and <a href="docs/source_manifest.json">source manifest</a>. The release includes offline trajectory examples, object reconstruction and physical-proxy utilities, and simulator interfaces.</p>
-      <p class="availability-note">The release now includes new reference implementations of structured training, failure-guided expansion and shared-filter control, plus exact recomputation of the saved appendix trajectory CSVs. These additions are not recovered experimental code; original checkpoints and full evaluation logs remain unavailable. Implementation details and dependencies are documented in the <a href="docs/REPRODUCIBILITY.md">reproducibility notes</a>.</p>
-      <details class="quickstart"><summary>Run the available examples</summary><pre><code>python -m pip install -r requirements.txt
+      <p>Visit the <a href="https://github.com/RoboVLA/More-from-Less">GitHub repository</a>, <a href="code.html">source browser</a>, <a href="https://github.com/RoboVLA/More-from-Less/blob/main/README.md">README</a>, and <a href="docs/source_manifest.json">source manifest</a>. The release includes offline trajectory examples, object reconstruction and physical-proxy utilities, and simulator interfaces.</p>
+      <p class="availability-note">The release now includes new reference implementations of structured training, failure-guided expansion and shared-filter control, plus exact recomputation of the saved appendix trajectory CSVs. These additions are not recovered experimental code; original checkpoints and full evaluation logs remain unavailable. Implementation details and dependencies are documented in the <a href="https://github.com/RoboVLA/More-from-Less/blob/main/docs/REPRODUCIBILITY.md">reproducibility notes</a>.</p>
+      <details class="quickstart"><summary>Run the available examples</summary><pre><code>git clone https://github.com/RoboVLA/More-from-Less.git
+cd More-from-Less
+python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 python -m morefromless.trajectory.reproduce_appendix
 python paper_pipeline/run_morefromless_pipeline.py --dry-run --include-disabled
@@ -283,7 +286,7 @@ python scripts/serve.py</code></pre></details>
   <footer>
     <div class="narrow">
       <p>More from Less · Anonymous review</p>
-      <p>Layout inspired by <a href="https://nerfies.github.io/">Nerfies</a> and the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a>. <a href="THIRD_PARTY_NOTICES.md">Sources &amp; licenses</a>.</p>
+      <p>Layout inspired by <a href="https://nerfies.github.io/">Nerfies</a> and the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a>. <a href="https://github.com/RoboVLA/More-from-Less/blob/main/THIRD_PARTY_NOTICES.md">Sources &amp; licenses</a>.</p>
       <p class="footer-note">Research manuscript · No journal acceptance is claimed.</p>
     </div>
   </footer>

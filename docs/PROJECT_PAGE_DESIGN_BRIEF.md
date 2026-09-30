@@ -1,12 +1,12 @@
-# Project page
+# Project-page design
 
-Updated 2026-09-22 to follow the academic paper-page layout commonly used by computer-vision conference projects. References: [Nerfies](https://nerfies.github.io/) and [Academic Project Page Template](https://github.com/eliahuhorwitz/Academic-project-page-template). This describes the presentation style, not a claim of conference acceptance.
+Updated 2026-09-30. The layout follows the academic project-page conventions illustrated by [Nerfies](https://nerfies.github.io/) and [Academic Project Page Template](https://github.com/eliahuhorwitz/Academic-project-page-template). This describes presentation, not conference acceptance.
 
-- Center the complete paper title, an anonymous-review note, and dark rounded Paper / Code / Videos / BibTeX buttons.
-- Place two existing real-task clips beneath the publication header, side by side on desktop and stacked on phones. Playback is user controlled.
-- Use white and light-gray sections, neutral text, blue links, and restrained decoration. Keep CSS, JavaScript, icons, and media local.
-- Follow Abstract → Method Overview → Experiments → Code & Resources → BibTeX. Display all three method figures continuously, rather than hiding them in tabs.
-- Preserve the manuscript figures, clips, citation, and Table 1 / Table 4 cells. Keep their different statistical units explicit; result tabs switch only the displayed table.
-- Retain the source browser and reproducibility notes. Do not add guessed GitHub/arXiv links, publication badges, or experimental claims.
+- Center the full title and use Code, GitHub, Videos and BibTeX resource buttons. The manuscript download entry is temporarily hidden.
+- Show the two retained real-task clips side by side on desktop and stacked on phones, with user-controlled playback.
+- Use neutral text, blue links, white/light-gray sections and local CSS/JS/media.
+- Follow Abstract → Method Overview → Experiments → Code & Resources → BibTeX. Show all three method figures continuously.
+- Preserve manuscript figures and Tables 1, 2, 4 and 6. Explain distinct evaluation units and task pools.
+- Offer an English source browser, rendered GitHub documentation links, and reproducibility notes. Do not add unverified publication badges or claims.
 
-Entry files: `index.html`, `code.html`, `static/css/project.css`, and `static/js/project.js`. The preview remains at `http://127.0.0.1:18765/`; port 8765 belongs to another project. No GitHub upload or manuscript edit accompanies this style change. Attribution and license boundaries are recorded in `THIRD_PARTY_NOTICES.md`.
+Entry files: [index.html](../index.html), [code.html](../code.html), [CSS](../static/css/project.css) and [JavaScript](../static/js/project.js). Public links and local preview instructions are in [hosting notes](LOCAL_RELEASE.md). Attribution and license boundaries are in [third-party notices](../THIRD_PARTY_NOTICES.md).

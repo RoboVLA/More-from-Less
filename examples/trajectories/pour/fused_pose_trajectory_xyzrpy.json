@@ -1,9 +1,9 @@
 {
   "created_at": "2026-07-04 01:10:16",
-  "generated_pose_json": "E:\\研究相关\\4独立3D高斯场景isaac sim  VLA_双臂\\Data\\ai生成倒水\\倒水\\运动物体轨迹_去水印RGB_分层深度\\moving_object_pose_trajectory_xyzrpy.json",
-  "real_retarget_pose_json": "E:\\研究相关\\4独立3D高斯场景isaac sim  VLA_双臂\\Data\\ai生成倒水\\倒水\\真实视频轨迹重定向_去水印RGB_分层深度\\retargeted_pose_trajectory_xyzrpy.json",
-  "target_video": "E:\\研究相关\\4独立3D高斯场景isaac sim  VLA_双臂\\Data\\ai生成倒水\\倒水\\倒水.mp4",
-  "output_dir": "E:\\研究相关\\4独立3D高斯场景isaac sim  VLA_双臂\\Data\\ai生成倒水\\倒水\\融合真实与生成轨迹_去水印RGB_分层深度",
+  "generated_pose_json": null,
+  "real_retarget_pose_json": null,
+  "target_video": null,
+  "output_dir": null,
   "coordinate_frame": "camera frame: +X right, +Y down, +Z forward; positions are millimeters and rotations are degrees",
   "blend_method": "Time-varying weighted average: generated-video trajectory preserves target-scene placement, real-video retargeted trajectory contributes real motion shape. Z is fixed to a stable metric-depth median for pouring.",
   "real_weight_base": 0.55,
@@ -1676,5 +1676,11 @@
       "real_retarget_y_mm": -139.41203730586122,
       "real_retarget_z_mm": 644.0
     }
-  ]
+  ],
+  "release_files": {
+    "generated_csv": "generated_pose_xyzrpy.csv",
+    "retargeted_csv": "real_retargeted_pose_xyzrpy.csv",
+    "fused_csv": "fused_pose_xyzrpy.csv"
+  },
+  "release_metadata_note": "Workstation-only source paths are omitted; original source JSON/video files are not included. Numerical values and processing parameters are unchanged. CSV paths are relative to this file."
 }

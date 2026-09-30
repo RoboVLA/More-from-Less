@@ -18,10 +18,10 @@
       "sha256": "9f5414cb0bbeef82661d239232c1fc2748559c99ba425decc01177c7cb466dff",
       "width": 1800,
       "height": 1200,
-      "source_file": "RAS_官方elsarticle_LaTeX_v161_图文统计与书目核验_20260929/图1至图4_可编辑与矢量源/图1_预览.png",
       "caption_latex": "The More from Less closed-loop framework. Structured bimanual VLA learns joint action chunks from sparse real demonstrations. Object-level 3DGS proxies support failure-guided expansion; only successful complete trajectories passing task, physics, and safety acceptance enter real-dominant retraining. At deployment, valid low-frequency references can compensate high-risk steps. Both base and fused actions pass through the shared QP and nonlinear recheck. The schematic layout was initially explored with imagegen and subsequently rebuilt in PowerPoint.",
       "vector_path": "static/media/v162/figure-1.pdf",
-      "vector_sha256": "0edea527915e7750c1518b4a027cdb5fe1f45d766848d2a2a14d5be7a3b29aec"
+      "vector_sha256": "0edea527915e7750c1518b4a027cdb5fe1f45d766848d2a2a14d5be7a3b29aec",
+      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
     },
     {
       "number": "2",
@@ -29,10 +29,10 @@
       "sha256": "dc51b56a1be4a31c57d8f87fe64c31c36ef749af789c75f1b9d7b724d2a78a08",
       "width": 1800,
       "height": 1010,
-      "source_file": "RAS_官方elsarticle_LaTeX_v161_图文统计与书目核验_20260929/图1至图4_可编辑与矢量源/图2_预览.png",
       "caption_latex": "Structured bimanual VLA. Synchronized global and wrist RGB images, language, and joint states produce a joint 32-step chunk of 12-dimensional absolute targets. Predicted and demonstrated actions use the same relation mapping and normalization. The two action-dependent relation maps contain pose and distance. Contact and role labels appear separately in the shared training context; they remain fixed and produce no action gradient. The schematic layout was initially explored with imagegen and subsequently rebuilt in PowerPoint.",
       "vector_path": "static/media/v162/figure-2.pdf",
-      "vector_sha256": "5e9625297dd58e223a50e0caa6fc56fe43b8414b026ef51ca686f3dbee191859"
+      "vector_sha256": "5e9625297dd58e223a50e0caa6fc56fe43b8414b026ef51ca686f3dbee191859",
+      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
     },
     {
       "number": "3",
@@ -40,10 +40,10 @@
       "sha256": "35ee6933b242b279f446520c21ac8fe2220dc99df11826b12b58d61ef18de87e",
       "width": 1800,
       "height": 1010,
-      "source_file": "RAS_官方elsarticle_LaTeX_v161_图文统计与书目核验_20260929/图1至图4_可编辑与矢量源/图3_预览.png",
       "caption_latex": "Object-level proxies and failure-guided expansion. Top: calibrated RGB and masks yield 3DGS visual assets, combined with simplified collision assets and recorded physics in Isaac Sim. Bottom: failures locate feasible sampling neighborhoods. Only successful complete trajectories passing joint acceptance enter real-dominant retraining. Optional residual RL proposes simulation candidates subject to the same acceptance; it is not deployed on the robot. The schematic layout was initially explored with imagegen and subsequently rebuilt in PowerPoint.",
       "vector_path": "static/media/v162/figure-3.pdf",
-      "vector_sha256": "816a0df6ccf31fbe01d94d48db1b92bdacafa322dc464fa5ea679498a821f6a3"
+      "vector_sha256": "816a0df6ccf31fbe01d94d48db1b92bdacafa322dc464fa5ea679498a821f6a3",
+      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
     },
     {
       "number": "4",
@@ -51,10 +51,10 @@
       "sha256": "9c224eac0e66bc1fe0d7abf4ebffa9b8cbfc7fdef97c45c448e2cf4b6e28494d",
       "width": 1800,
       "height": 1200,
-      "source_file": "RAS_官方elsarticle_LaTeX_v161_图文统计与书目核验_20260929/图1至图4_可编辑与矢量源/图4_预览.png",
       "caption_latex": "Step-level compensation and shared safety filtering. High risk requests an asynchronous 2D reference. Current-state alignment, depth and calibration, task-masked DLS IK, and validity checks precede gated fusion. Low risk, waiting, or invalidity sets the fusion weight to zero. All actions pass through the shared QP and nonlinear recheck; failure causes slowdown or hold. Grippers inherit VLA targets; unobserved orientation has no exact-preservation guarantee. The schematic layout was initially explored with imagegen and subsequently rebuilt in PowerPoint.",
       "vector_path": "static/media/v162/figure-4.pdf",
-      "vector_sha256": "48b6fc6c4e93a82d195be926e2dfd06ed55cee6552d4eb9e9abbc93fdfd5506a"
+      "vector_sha256": "48b6fc6c4e93a82d195be926e2dfd06ed55cee6552d4eb9e9abbc93fdfd5506a",
+      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
     },
     {
       "number": "5",
@@ -62,8 +62,8 @@
       "sha256": "420882206cee779fcfffb53f09a48fa1dbd0ca665ef1b32db77c2094c1bdcfa2",
       "width": 2600,
       "height": 2301,
-      "source_file": "RAS_投稿准备包_v162_20260929/LaTeX_Source/figure_5.png",
-      "caption_latex": "Examples of six bimanual tasks and multiview observations. Frames in each three-view group are sampled at the same relative time in the source videos. Separate clips illustrate the constituent stages of the wipe-and-pour composite task. The wipe-board and hold-and-wipe-board tasks use different times from the same recording to show wiping and cooperative board stabilization, respectively. These examples do not represent six independent complete evaluation episodes."
+      "caption_latex": "Examples of six bimanual tasks and multiview observations. Frames in each three-view group are sampled at the same relative time in the source videos. Separate clips illustrate the constituent stages of the wipe-and-pour composite task. The wipe-board and hold-and-wipe-board tasks use different times from the same recording to show wiping and cooperative board stabilization, respectively. These examples do not represent six independent complete evaluation episodes.",
+      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
     },
     {
       "number": "6",
@@ -71,8 +71,8 @@
       "sha256": "446d7fbb7732590f5ac2132e7a18f435e00ecaf2953de1a6dadb6e08e335709a",
       "width": 2600,
       "height": 844,
-      "source_file": "RAS_投稿准备包_v162_20260929/LaTeX_Source/figure_6.png",
-      "caption_latex": "RGB observations, ID masks, and region extraction for object-level modeling. Columns correspond to acquisition groups 001--008. The first two rows show same-view RGB images and ID masks, with selected regions marked in blue; the third row shows enlarged RGB content within the masks."
+      "caption_latex": "RGB observations, ID masks, and region extraction for object-level modeling. Columns correspond to acquisition groups 001--008. The first two rows show same-view RGB images and ID masks, with selected regions marked in blue; the third row shows enlarged RGB content within the masks.",
+      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
     },
     {
       "number": "7",
@@ -80,8 +80,8 @@
       "sha256": "b3e6e6e18e418beba121cfec5f41384e26c758d28dd29399cd70478ad710c6a9",
       "width": 2600,
       "height": 964,
-      "source_file": "RAS_投稿准备包_v162_20260929/LaTeX_Source/figure_7.png",
-      "caption_latex": "Real-robot interaction sequences for pouring and board wiping. Time advances from left to right; the upper-right label in each frame gives the actual time (s) within its source clip, with the two rows timed independently. Orange boxes with white outlines and numbered labels mark interaction regions of interest: 1 denotes the visible part of the held container, 2 the receiving container, and 3 the eraser and adjacent board surface. Numbers link the figure to the text and do not denote risk triggers, compensation activation, or successful recovery."
+      "caption_latex": "Real-robot interaction sequences for pouring and board wiping. Time advances from left to right; the upper-right label in each frame gives the actual time (s) within its source clip, with the two rows timed independently. Orange boxes with white outlines and numbered labels mark interaction regions of interest: 1 denotes the visible part of the held container, 2 the receiving container, and 3 the eraser and adjacent board surface. Numbers link the figure to the text and do not denote risk triggers, compensation activation, or successful recovery.",
+      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
     },
     {
       "number": "8",
@@ -89,8 +89,8 @@
       "sha256": "a387f5db30a8ff78a6b0dbd5bfea67d342ff2c79ce8dea212f9afb0bd9b3ed23",
       "width": 2600,
       "height": 1311,
-      "source_file": "RAS_投稿准备包_v162_20260929/LaTeX_Source/figure_8.png",
-      "caption_latex": "Illustrative potential failure factors and inspection points. Two examples appear in each column: 1--2 show holding and pouring targets, 3--4 a proxy opening and object point cloud, 5--6 a cup handle and eraser, and 7--8 a box lid and microwave hinge. Markers indicate observation regions only, not annotated failure episodes."
+      "caption_latex": "Illustrative potential failure factors and inspection points. Two examples appear in each column: 1--2 show holding and pouring targets, 3--4 a proxy opening and object point cloud, 5--6 a cup handle and eraser, and 7--8 a box lid and microwave hinge. Markers indicate observation regions only, not annotated failure episodes.",
+      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
     },
     {
       "number": "A.1",
@@ -98,8 +98,8 @@
       "sha256": "9c1c2ef9861d1a789b8baa3a543e41ba878e5cc362df109d080a2cd395447d48",
       "width": 2600,
       "height": 1354,
-      "source_file": "RAS_投稿准备包_v162_20260929/LaTeX_Source/figure_A_1.png",
-      "caption_latex": "Real execution, object-level proxy, and virtual execution for medicine-box opening. The upper row contains two real-robot frames and the proxy scene; the lower row contains three simulation frames. Marker 1 indicates the visible lid region and marker 2 the proxy articulation region. Times are measured independently in the respective videos; rows do not imply synchronized states."
+      "caption_latex": "Real execution, object-level proxy, and virtual execution for medicine-box opening. The upper row contains two real-robot frames and the proxy scene; the lower row contains three simulation frames. Marker 1 indicates the visible lid region and marker 2 the proxy articulation region. Times are measured independently in the respective videos; rows do not imply synchronized states.",
+      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
     },
     {
       "number": "A.2",
@@ -107,8 +107,8 @@
       "sha256": "a07e0c089d276d32bde776cdf9534c24e47a5b3bde9007f92bba7548019c6005",
       "width": 2600,
       "height": 1712,
-      "source_file": "RAS_投稿准备包_v162_20260929/LaTeX_Source/figure_A_2.png",
-      "caption_latex": "Representative temporal frames from five groups of real bimanual action clips. From top to bottom, the rows show pouring, microwave opening, microwave closing, medicine-box opening, and board wiping. Each row comes from one video; the five columns follow temporal order, with source-video time (s) shown in the upper-right corner. Orange boxes mark interaction regions of interest, such as containers, doors, box lids, and erasers."
+      "caption_latex": "Representative temporal frames from five groups of real bimanual action clips. From top to bottom, the rows show pouring, microwave opening, microwave closing, medicine-box opening, and board wiping. Each row comes from one video; the five columns follow temporal order, with source-video time (s) shown in the upper-right corner. Orange boxes mark interaction regions of interest, such as containers, doors, box lids, and erasers.",
+      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
     },
     {
       "number": "A.3",
@@ -116,8 +116,8 @@
       "sha256": "cd7a4bd80265dd29079d5ada4d0f5a0f3e77ccbb595e5a3a7ef8859f095f9461",
       "width": 2600,
       "height": 1121,
-      "source_file": "RAS_投稿准备包_v162_20260929/LaTeX_Source/figure_A_3.png",
-      "caption_latex": "Offline image-trajectory diagnostics for pouring and board wiping. The four columns show real-video frames, trajectories extracted from generated videos, retargeted real-video trajectories, and offline fused trajectories, respectively. The last three columns overlay complete pixel trajectories on the same generated frame, with dots marking the trajectory positions corresponding to that frame. Upper-right labels give relative times in the respective source videos; resampling does not imply synchronization between real and generated videos."
+      "caption_latex": "Offline image-trajectory diagnostics for pouring and board wiping. The four columns show real-video frames, trajectories extracted from generated videos, retargeted real-video trajectories, and offline fused trajectories, respectively. The last three columns overlay complete pixel trajectories on the same generated frame, with dots marking the trajectory positions corresponding to that frame. Upper-right labels give relative times in the respective source videos; resampling does not imply synchronization between real and generated videos.",
+      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
     },
     {
       "number": "A.4",
@@ -125,8 +125,8 @@
       "sha256": "3eb08df2c853daf2feadc9c2c336207ba6f82652ebae20ff87b050023f14f3b0",
       "width": 2600,
       "height": 1710,
-      "source_file": "RAS_投稿准备包_v162_20260929/LaTeX_Source/figure_A_4.png",
-      "caption_latex": "Numerical diagnostics of offline pouring and board-wiping trajectories. Each row represents one clip, and n denotes the trajectory-point count. The three columns show the camera-frame XY path, modeled depth Z, and 3-D Euclidean distance to the retargeted trajectory R. G denotes the trajectory extracted from the generated video and mapped into 3-D; F denotes the offline fused trajectory. The XY axes have equal scales, and curves are not independently normalized. Time is the relative sampling time of the target generated clip."
+      "caption_latex": "Numerical diagnostics of offline pouring and board-wiping trajectories. Each row represents one clip, and n denotes the trajectory-point count. The three columns show the camera-frame XY path, modeled depth Z, and 3-D Euclidean distance to the retargeted trajectory R. G denotes the trajectory extracted from the generated video and mapped into 3-D; F denotes the offline fused trajectory. The XY axes have equal scales, and curves are not independently normalized. Time is the relative sampling time of the target generated clip.",
+      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
     }
   ],
   "notes": [
@@ -134,5 +134,6 @@
     "Scientific content, experimental values, equations, and references are retained.",
     "The anonymous GitHub project URL is included at the end of the abstract.",
     "Resource availability updated to describe the public release and distinguish new reference implementations from historical experimental code."
-  ]
+  ],
+  "website_manuscript_link_visible": false
 }

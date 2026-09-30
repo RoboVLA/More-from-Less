@@ -1,8 +1,14 @@
-# 发布验证（2026-09-30）
+# Release validation
 
-- 24项测试通过，包含真实PyTorch自动微分、优化器更新、FK、SO(3)局部映射、有效步掩码、成功轨迹联合验收、真实组权重、异步参考、DLS与共享QP过滤。CPU PyTorch版本：2.14.0+cpu。测试使用解析样例，没有机器人执行。
-- 附录倒水72点、擦白板75点的重算结果与原F CSV全部位姿分量完全一致；原CSV/JSON未修改。两个内部距离变化分别四舍五入为61.2%和62.0%。
-- 主页表1、2、4、6的97组均值/标准差逐项匹配论文；218个HTML资源引用检查通过；新增表2/6的切换和排版已在浏览器检查。
-- 94个既有源代码、数据、当前论文媒体文件保持原SHA-256；34个旧图及旧v155快照带哈希归档到公开仓库之外。
-- v164仍为76页，LaTeX除资源获取声明外逐字相同；PDF文本仅第46页变化，该页已经渲染目视检查。当前稿件/图像哈希见 `current_manuscript.json`。
-- 新方法代码属于发布时补充的参考实现，不能将测试通过解释为Table 1–8复现、原系统恢复或安全认证。运行范围见 `METHOD_REFERENCE.md` 和 `REPRODUCIBILITY.md`。
+## Method and data validation — 2026-09-30
+
+- All 24 engineering tests passed with CPU PyTorch 2.14.0+cpu, including actual gradients, optimizer updates, FK, local SO(3) mapping, valid-step masks, complete-success acceptance, real-group weighting, asynchronous references, DLS and shared QP filtering. Tests used analytic fixtures and no robot execution.
+- Appendix recomputation matched every saved pose component for 72 pouring and 75 wiping points. The internal distance reductions round to 61.2% and 62.0%.
+- The website's 97 mean/SD pairs across Tables 1, 2, 4 and 6 matched the manuscript. Table 2/6 switching and layout were checked in a browser.
+- Manuscript v164 remains 76 pages. Relative to v163, LaTeX changed only the availability statement; extracted PDF text changed only on page 46, which was rendered and inspected.
+
+## Website/documentation revision — 2026-09-30
+
+All 14 Markdown documents are in English. The revision passed 275 local link/asset checks and all 24 engineering tests; 97 table mean/SD pairs and 114 preserved source/data/media files were unchanged. The source-browser file selection, GitHub target and page header were checked in a browser. The website omits the Paper button, links explicitly to GitHub, and uses rendered GitHub documentation links. Public trajectory metadata replaces workstation-only paths; all CSV bytes, JSON trajectory values and processing parameters remain unchanged. Source snapshots retain their original content and hashes, including any original-language comments or asset names.
+
+Method tests establish engineering behavior only. They do not demonstrate reproduction of Tables 1–8, recovery of the historical system, or hardware safety certification. See [method scope](METHOD_REFERENCE.md) and [reproducibility](REPRODUCIBILITY.md).

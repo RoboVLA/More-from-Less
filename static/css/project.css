@@ -159,3 +159,7 @@ footer p { margin: 4px 0; }
   .resource-button .icon { width: 16px; height: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.file-list a[aria-current="true"] { font-weight: 700; text-decoration: underline; }
+#source-github { margin-left: 18px; }
+#source-status { font-size: 14px; }

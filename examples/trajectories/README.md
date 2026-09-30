@@ -1,5 +1,9 @@
-# 离线轨迹示例
+# Offline trajectory examples
 
-`pour` 和 `wipe` 分别保存既有生成、真实视频重定向及融合轨迹。CSV 字段为 `frame,time_s,x,y,z,rx,ry,rz`；这些示例使用相机系毫米和角度制。JSON 内历史元数据保留原样。
+[pour](pour/) and [wipe](wipe/) contain retained generated (G), real-video-retargeted (R), and fused (F) trajectories. CSV columns are `frame,time_s,x,y,z,rx,ry,rz`, using camera-frame millimeters and degrees.
 
-示例是离线诊断材料，不是完整实机回合日志，也不是策略输出的 12 维关节命令。默认运行器读取 generated 与 real_retargeted，并把新演示输出写入被 Git 忽略的 outputs/，不会改写这里的历史 fused 文件。演示参数不能被视为原实验配置。
+These are offline diagnostics, not complete robot evaluation logs or 12-D policy actions. Run `python -m morefromless.trajectory.reproduce_appendix` from the repository root. It reads G/R, reproduces the saved processing, and compares against F without overwriting any input. Results go to the Git-ignored `outputs/appendix_reproduction/` directory.
+
+Public JSON metadata lists portable CSV references under `release_files`. The old workstation-specific `generated_pose_json`, `real_retarget_pose_json`, `target_video`, and `output_dir` fields are null because those external artifacts are not shipped at those paths. Original metadata is backed up outside this repository. Every numerical trajectory value and historical processing parameter is retained. The provided real-task teaser videos are not substitutes for the missing generated-video sources.
+
+Coordinate intrinsics are estimated and depth is modeled. R contributes to F; lower F-to-R distance is an internal consistency measure, not independent tracking accuracy or online recovery performance.
