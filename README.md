@@ -4,15 +4,32 @@
 
 [Project website](https://robovla.github.io/More-from-Less/) · [GitHub repository](https://github.com/RoboVLA/More-from-Less) · [Source browser](https://robovla.github.io/More-from-Less/code.html) · [Reproducibility](docs/REPRODUCIBILITY.md) · [Method reference](docs/METHOD_REFERENCE.md)
 
-This release provides method reference implementations, reproducible offline trajectory diagnostics, and retained reconstruction and simulator utilities. The reference implementations were added for the release; they are **not recovered historical experiment code**. Original checkpoints and full evaluation logs are unavailable, so this repository does not reproduce Tables 1–8 end to end. The manuscript download is temporarily hidden from the project website.
+MFL learns coordinated bimanual actions from sparse real demonstrations. In simulation, the current policy’s failures guide where to collect new training trajectories. On the real robot, a valid video-derived reference can correct an individual high-risk step.
 
-![Method overview](static/media/v162/figure-1.png)
+[![MFL training and execution overview](static/media/v207/figure-1.png)](static/media/v207/figure-1.pdf)
 
 ## Method
 
-1. **Structured bimanual VLA.** Synchronized global and left/right wrist RGB, language, and joint states produce 32 × 12 absolute joint targets. Pose and distance relations provide training-only geometric supervision; contact and role labels are fixed training context.
-2. **Physical proxies and failure-region expansion.** 3DGS appearance, simplified collision geometry, and measured/CAD/URDF/prior physics are modeled separately. Only complete successful virtual trajectories that pass task, physics, and safety acceptance enter real-dominant retraining.
-3. **Step-level recovery.** Asynchronous image-plane references undergo current-state alignment, depth/calibration mapping, task-masked IK, validity gating, and shared QP/nonlinear checks. Grippers inherit the VLA targets. The approximately two-minute video-generation latency is outside the fast control loop.
+1. **Learn the joint action.** Three synchronized RGB views, language and joint state feed a shared VLA policy. Each of its 32 steps contains five joint targets and one gripper target per arm. The training loss compares predicted and demonstrated actions in a common geometry: the relative translation and rotation of the two end effectors and the minimum clearance of prohibited robot link pairs. Contact and role labels are fixed training context. [Policy diagram](static/media/v207/figure-2.pdf)
+2. **Expand around failures.** The background and movable objects have independent 3DGS appearance models. Separate collision geometry and externally assigned physics allow the policy to interact with them in Isaac Sim. A failed or high-risk state identifies a neighborhood for sampling feasible starts. Only complete successful trajectories passing task, physics and safety checks enter the cumulative virtual set. Retraining gives real demonstrations greater weight, and the updated policy identifies the next neighborhoods. Optional residual RL proposes candidates in simulation. [Expansion diagram](static/media/v207/figure-3.pdf)
+3. **Recover individual steps.** A 2D path tracked in an asynchronously generated video (Kling AI 3.0, approximately two minutes per request) is aligned to the current state. Depth from the head camera, calibration and task-masked inverse kinematics supply local joint targets. The grippers retain the VLA commands. A valid reference contributes only at high risk. Both base and fused commands pass through the same QP and nonlinear recheck before execution. [Execution diagram](static/media/v207/figure-4.pdf)
+
+## Results
+
+| Manuscript comparison | Evaluation unit and metric | Reported means |
+|---|---|---|
+| Table 1 · Naive VLA → Structured VLA → Full Pipeline | Success across four functional stages, equally weighted within each paired unit | 68.83% → 75.83% → 89.00% |
+| Table 2 · Uniform rollout → Failure-region expansion | Complete real-robot task success, with successful trajectories selected in both configurations | 78.83% → 84.33% |
+| Table 4 · Video-reference baseline → Full compensation | Step recovery on matched trigger segments | 53.33% → 67.78% |
+| Table 6 · Full Pipeline → Step compensation disabled | Step recovery in the separate ablation task pool | 69.56% → 31.78% |
+
+The six real-robot task categories include composite wiping–pouring and cooperative board wiping. Table 1 uses 15 paired policy–environment units: five independently trained policies, each evaluated with three environment seeds. The [project results](https://robovla.github.io/More-from-Less/#results) give the full four tables with sample standard deviations.
+
+## What the release reproduces
+
+The appendix command below recomputes the saved offline fusion outputs. In Appendix Fig. A.4, fusion reduces mean distance to the retargeted input by 61.2% for pouring and 62.0% for wiping. The retargeted trajectory is itself an input to fusion. These figures describe offline processing. Online recovery is evaluated separately in Table 4.
+
+The training, expansion and control code provides reference implementations with analytic fixtures. Reproducing the original robot evaluations would also require the historical checkpoints, complete demonstrations and episode logs, which are unavailable.
 
 ## Quick start
 
@@ -55,7 +72,7 @@ Without PyTorch, gradient tests are explicitly skipped. Optional pipeline stages
 | [Camera utilities](tools/gemini_camera/) | RGB-D acquisition and tuning; hardware, drivers and SDK required. |
 | [Historical video tools](tools/trajectory_compensation/) | Original offline processing scripts with scene-specific defaults. |
 | [Pipeline entry](paper_pipeline/) | Appendix reproduction and optional reference-module checks. |
-| [Current figures](static/media/v162/) | Figures 1–8 and A.1–A.4 retained by manuscript v164. The directory identifies the figure source version. |
+| [Manuscript figures](static/media/v207/) | Figures 1–8 and A.1–A.4 from the current English manuscript, with individual PDFs and web previews. |
 | [Validation record](docs/VALIDATION.md) | Verified scope, preserved data and known limits. |
 
 The [paper-to-code map](docs/PAPER_PIPELINE.md), [source manifest](docs/source_manifest.json), and [asset guide](docs/DATA_AND_ASSETS.md) record provenance and version boundaries.

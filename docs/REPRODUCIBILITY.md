@@ -1,6 +1,6 @@
 # Reproducibility and evidence scope
 
-Updated 2026-09-30. The reference manuscript is v164; its experimental results and figures are retained from v162. This release combines retained source snapshots, new method reference implementations, and a verifiable appendix-processing entry point.
+The project page and README follow the v207 English manuscript. This release combines retained source snapshots, new method reference implementations, and a verifiable appendix-processing entry point.
 
 | Component | What can be run or checked | What this does not reproduce |
 |---|---|---|
@@ -32,4 +32,4 @@ Policy inputs are synchronized three-view RGB, language and joint states. Output
 
 Offline 6-D camera-frame trajectories are not 12-D joint actions. Depth is modeled and intrinsics are estimated. R participates in constructing F, so reduced F-to-R distance describes internal consistency. Videos retain their documented source meanings.
 
-Website Tables 1, 2, 4 and 6 reproduce the manuscript's summary values. Their evaluation units/task pools differ; Table 1 summarizes 15 paired units. Raw episodes cannot be reconstructed from these aggregates. The [asset manifest](current_manuscript.json) identifies current figures. Historical figures and the old v155 snapshot are no longer in the published file tree. The manuscript link is temporarily hidden from the website.
+Website Tables 1, 2, 4 and 6 reproduce the manuscript's summary values. Their evaluation units/task pools differ; Table 1 summarizes 15 paired units from five independently trained policies and three environment repeats per policy. Raw episodes cannot be reconstructed from these aggregates. The [asset manifest](current_manuscript.json) identifies current figures. Historical figures and the old v155 snapshot are no longer in the published file tree. The manuscript link is temporarily hidden from the website.

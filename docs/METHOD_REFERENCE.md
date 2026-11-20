@@ -4,10 +4,10 @@ The reference modules added on 2026-09-30 implement inspectable algorithmic step
 
 | Module | Provided implementation | Paper mapping | Required system adapters |
 |---|---|---|---|
-| [structured.py](../morefromless/method/structured.py) | Bimanual L1 actions, shared relation mapping/normalization, detached context, valid-step masks, distance safety prior, gradients and optimizer update | Eqs. (4)–(7) | VLA/checkpoint, data splits, loss parameters, differentiable complete geometry |
+| [structured.py](../morefromless/method/structured.py) | Bimanual L1 actions, shared relation mapping/normalization, detached context, valid-step masks, distance safety prior, gradients and optimizer update | Eqs. (8)–(14) | VLA/checkpoint, data splits, loss parameters, differentiable complete geometry |
 | [kinematics.py](../morefromless/method/kinematics.py) | Differentiable five-revolute-joint FK per arm; local SO(3) log for relative pose | Section 3.1 | Measured/URDF origins and axes, base/tool transforms, collision geometry |
-| [expansion.py](../morefromless/method/expansion.py) | Initial failure discovery, bounded sampling, feasibility checks, joint acceptance, deduplication, retraining callbacks and iteration records | Algorithm 1; Eqs. (18)–(19) | Isaac Sim scene, state adapter, task/physics/safety criteria, training adapter |
-| [control.py](../morefromless/method/control.py) | Async requests, capture-time age, depth mapping, bimanual masked DLS, gated fusion, shared QP and nonlinear checks | Eqs. (24), (26)–(31) | Video service, tracking/alignment, Jacobians/masks, full collision checks, risk signals, hardware drivers |
+| [expansion.py](../morefromless/method/expansion.py) | Initial failure discovery, bounded sampling, feasibility checks, joint acceptance, deduplication, retraining callbacks and iteration records | Algorithm 1 and Eqs. (20)–(30) | Isaac Sim scene, state adapter, task/physics/safety criteria, training adapter |
+| [control.py](../morefromless/method/control.py) | Async requests, capture-time age, depth mapping, bimanual masked DLS, gated fusion, shared QP and nonlinear checks | Section 3.3, Eqs. (34)–(56) | Video service, tracking/alignment, Jacobians/masks, full collision checks, risk signals, hardware drivers |
 
 The original models, physical parameters, run settings and device adapters cannot be uniquely recovered from the formulas. These modules alone do not reproduce Tables 1–8.
 

@@ -7,7 +7,7 @@
   <meta name="description" content="Structured bimanual learning, failure-guided digital-twin expansion, and state-aligned trajectory compensation from sparse demonstrations.">
   <meta name="citation_title" content="More from Less: 3D Gaussian Splatting Digital Twins with Iterative Expansion and Trajectory Compensation for Sparse-Demonstration Bimanual Manipulation">
   <meta property="og:title" content="More from Less: 3D Gaussian Splatting Digital Twins with Iterative Expansion and Trajectory Compensation for Sparse-Demonstration Bimanual Manipulation">
-  <meta property="og:image" content="https://robovla.github.io/More-from-Less/static/media/v162/figure-1.png">
+  <meta property="og:image" content="https://robovla.github.io/More-from-Less/static/media/v207/figure-1.png">
   <meta property="og:url" content="https://robovla.github.io/More-from-Less/">
   <link rel="canonical" href="https://robovla.github.io/More-from-Less/">
   <meta name="theme-color" content="#ffffff">
@@ -22,7 +22,6 @@
   </nav>
   <header class="publication-header wrap">
     <h1><span class="paper-name">More from Less:</span> 3D Gaussian Splatting Digital Twins with Iterative Expansion and Trajectory Compensation for Sparse-Demonstration Bimanual Manipulation</h1>
-    <p class="author-note">Anonymous review version</p>
     <div class="resources" aria-label="Research resources">
         <a class="button resource-button" href="code.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg><span>Code</span></a>
         <a class="button resource-button" href="https://github.com/RoboVLA/More-from-Less"><span>GitHub</span></a>
@@ -46,15 +45,15 @@
           <figcaption>Board wiping</figcaption>
         </figure>
       </div>
-      <p class="teaser-caption"><strong>More from Less</strong> combines structured bimanual learning, failure-guided digital-twin expansion, and state-aligned trajectory compensation.</p>
+      <p class="teaser-caption">One arm stabilizes the object while the other acts. <strong>MFL</strong> learns their joint motion from demonstrations, revisits failures in simulation and uses video guidance to recover individual steps.</p>
       <div class="demo-control"><button id="toggle-demos" class="text-button" type="button">Play demos</button></div>
-      <p class="media-note">Representative real robot footage. These clips illustrate task interactions, not compensation activation or recovery outcomes.</p>
+      <p class="media-note">Real-robot demonstrations of the task interactions. Table 4 reports recovery on matched trigger segments.</p>
     </section>
 
     <section id="abstract" class="section abstract-section">
       <div class="narrow">
         <h2>Abstract</h2>
-        <p class="abstract">Sparse bimanual demonstrations cover limited object states and contact configurations. More from Less combines structured action prediction, failure-region expansion, and local recovery. A vision–language–action (VLA) policy predicts joint action chunks with shared context and training-only geometric supervision. Object-level 3D Gaussian Splatting supplies appearance assets for physical proxies with separate collision geometry and assigned physics. Policy failures locate regions for virtual rollouts. Only complete trajectories passing task, physics, and safety checks enter real-dominated retraining. During deployment, asynchronous video references provide image-plane targets for current-state mapping and gated fusion. Base and fused actions pass through a shared quadratic program and nonlinear recheck. Across six real-robot task categories, Full Pipeline reaches a four-stage macro-average success rate of 89.00%, compared with 75.83% for Structured Dual-arm VLA. This comparison measures stage-level outcomes of the combined system, rather than complete-task success.</p>
+        <p class="abstract">Bimanual manipulation requires coordinated arm motion and object contact, but costly demonstrations cover only limited interaction states. We therefore propose MFL (More from Less), combining failure-region expansion in digital twins with deployment-time trajectory compensation for sparse-demonstration learning. A structured vision–language–action (VLA) policy first learns joint bimanual actions from real demonstrations using shared task context and training-time geometric supervision. To extend interaction experience, MFL decouples the background and manipulable objects into independent 3D Gaussian Splatting (3DGS) submodels and combines them with separate collision geometry and external physical parameters. Policy rollouts in this digital twin locate failures, around which feasible initial states are sampled for candidate generation. Complete trajectories that finish the task and pass physics and safety checks enter real-dominant retraining. The updated policy then identifies subsequent expansion regions. At deployment, 2D target trajectories extracted from asynchronously generated videos are aligned with the current state and mapped to actions. Valid references are fused with policy outputs only at high risk. Both base and fused actions pass through a shared quadratic-programming filter and nonlinear recheck. Across six real-robot task categories, the full system achieves a four-stage macro-average success rate of 89.00%, exceeding structured VLA by 13.17 percentage points. In a separate step-recovery evaluation, the complete compensation configuration achieves 67.78% recovery.</p>
 
       </div>
     </section>
@@ -62,20 +61,20 @@
     <section id="method" class="section wrap">
       <h2>Method Overview</h2>
       <p class="section-intro">Sparse real demonstrations anchor policy learning. Accepted virtual trajectories extend training coverage, while valid references support local recovery at deployment.</p>
-      <figure class="paper-figure overview"><a href="static/media/v162/figure-1.png" target="_blank" rel="noopener"><img src="static/media/v162/figure-1.png" alt="Figure 1: structured policy learning, digital-twin expansion and step-level execution" width="1800" height="1200" loading="lazy"></a><figcaption>Figure 1 · The complete framework. Failure feedback locates expansion regions; only accepted, successful complete virtual trajectories return to real-dominant training.</figcaption></figure>
+      <figure class="paper-figure overview"><a href="static/media/v207/figure-1.pdf" target="_blank" rel="noopener"><img src="static/media/v207/figure-1.png" alt="Figure 1: structured policy learning, digital-twin expansion and step-level execution" width="2200" height="1467" loading="lazy"></a><figcaption>Figure 1 · A rollout can reveal a new starting region for training. At deployment, the same policy can use a local reference to recover a step.</figcaption></figure>
 
 
       <section class="method-detail" id="policy"><h3>Structured Bimanual Policy</h3>
-<p>Three synchronized RGB views, language and joint state feed a shared policy. A 32 × 12 action chunk jointly represents both arms: five driven joints and one gripper per arm. Pose and distance relations provide differentiable training supervision. Contact and role labels provide fixed training context; they are not additional inference inputs or differentiable action targets.</p>
-<figure class="paper-figure"><a href="static/media/v162/figure-2.png" target="_blank" rel="noopener"><img src="static/media/v162/figure-2.png" alt="Structured bimanual VLA inference and training-only relation supervision" loading="lazy"></a><figcaption>Figure 2 · Predicted and demonstrated actions share geometric relation mapping and normalization. Contact and role labels remain training context.</figcaption></figure></section>
+<p>The policy combines synchronized RGB from the head and both wrists with the instruction and joint state. It predicts 32 steps of absolute targets for both arms together. Each arm contributes five joint positions and one gripper value per step. During training, the predicted and demonstrated actions pass through the same kinematics and normalization.</p>
+<figure class="paper-figure"><a href="static/media/v207/figure-2.pdf" target="_blank" rel="noopener"><img src="static/media/v207/figure-2.webp" alt="Structured bimanual VLA inference and training-only relation supervision" width="2200" height="1234" loading="lazy"></a><figcaption>Figure 2 · At each valid step, seven quantities describe the joint configuration: relative translation (3), relative rotation (3) and minimum clearance over prohibited link pairs (1). These pairs can lie within one arm or span both arms. Contact and role labels provide fixed training context.</figcaption></figure></section>
 
 <section class="method-detail" id="proxy"><h3>Failure-Guided Digital-Twin Expansion</h3>
-<p>Object-level 3DGS appearance and simplified collision assets form a physical proxy with measured or prior physics. Current-policy failures guide feasible local initial states. Candidate rollouts must pass task, physics and safety acceptance; optional residual RL proposes candidates only in simulation.</p>
-<figure class="paper-figure"><a href="static/media/v162/figure-3.png" target="_blank" rel="noopener"><img src="static/media/v162/figure-3.png" alt="Object-level physical proxy and failure-region expansion pipeline" loading="lazy"></a><figcaption>Figure 3 · Visual reconstruction does not infer mass, articulation or contact physics automatically.</figcaption></figure></section>
+<p>MFL reconstructs the background and movable objects as independent 3DGS assets from the real scene. Separate collision geometry and physical parameters from measurements, CAD/URDF or priors support interaction in Isaac Sim. Failed or high-risk rollout states identify where to sample feasible starting configurations. Only complete, successful rollouts that pass task, physics and safety checks join real-dominant retraining. The updated policy selects the next regions.</p>
+<figure class="paper-figure"><a href="static/media/v207/figure-3.pdf" target="_blank" rel="noopener"><img src="static/media/v207/figure-3.webp" alt="Object-level physical proxy and failure-region expansion pipeline" width="2200" height="1234" loading="lazy"></a><figcaption>Figure 3 · Markers on the simulated box-opening frame illustrate a failure neighborhood. The adjacent frames show two lid configurations. Optional residual exploration proposes additional candidates in simulation under the same acceptance criteria.</figcaption></figure></section>
 
 <section class="method-detail" id="recovery"><h3>Step-Level Trajectory Compensation</h3>
-<p>Kling AI 3.0 generates 2D video references asynchronously, taking approximately two minutes per generation. Its 2D image targets undergo timestamp and current-state alignment, depth/calibration mapping, task-masked DLS IK and validity checks. Gated actions always pass shared QP filtering and nonlinear rechecks; rejected commands slow or hold execution.</p>
-<figure class="paper-figure"><a href="static/media/v162/figure-4.png" target="_blank" rel="noopener"><img src="static/media/v162/figure-4.png" alt="Single online execution chain with asynchronous reference generation and shared safety filtering" loading="lazy"></a><figcaption>Figure 4 · Low risk, waiting or invalid reference sets the fusion weight to zero. This is not a claim of certified safety.</figcaption></figure></section>
+<p>Kling AI 3.0 generates a video asynchronously (about two minutes per request). The base policy continues to execute while the video is pending. When it returns, MFL tracks the target in the generated frames and aligns its 2D path to the current state and task stage. Head-camera depth, calibration and task-masked damped least-squares inverse kinematics map observable motion into targets for the ten arm joints. Both grippers inherit their policy commands.</p>
+<figure class="paper-figure"><a href="static/media/v207/figure-4.pdf" target="_blank" rel="noopener"><img src="static/media/v207/figure-4.webp" alt="Single online execution chain with asynchronous reference generation and shared safety filtering" width="2200" height="1467" loading="lazy"></a><figcaption>Figure 4 · A valid reference contributes only at high risk. Low risk, a pending request or an invalid reference sets the applied fusion weight to zero. Both base and fused commands pass through the same quadratic program and nonlinear joint-limit and collision recheck. Failure of either check calls for slowing or holding.</figcaption></figure></section>
 
     </section>
 
@@ -83,8 +82,8 @@
       <div class="wrap">
         <h2>Experiments</h2>
         <h3 class="centered">Six Bimanual Task Categories</h3>
-        <p class="section-intro">Pouring, microwave opening, medicine-box opening, board wiping, wiping–pouring, and holding–wiping coordination.</p>
-        <figure class="paper-figure"><a href="static/media/v162/figure-5.png" target="_blank" rel="noopener"><img src="static/media/v162/figure-5.png" alt="Six task categories from the current manuscript" loading="lazy"></a><figcaption>Figure 5 · Representative observations from the task suite. The four functional stages used below are a separate aggregation of these tasks.</figcaption></figure>
+        <p class="section-intro">Pouring, opening a microwave, opening a medicine box, wiping a board, a composite wiping–pouring task, and cooperative wiping in which one arm steadies the board.</p>
+        <figure class="paper-figure"><a href="static/media/v207/figure-5.pdf" target="_blank" rel="noopener"><img src="static/media/v207/figure-5.webp" alt="Six task categories from the current manuscript" width="2600" height="2301" loading="lazy"></a><figcaption>Figure 5 · Each example pairs the global view with the left and right wrist views at the same relative time. Separate clips illustrate the two stages of the composite wiping–pouring task.</figcaption></figure>
 
         <div id="results" class="results-block">
           <h3 class="centered">Quantitative Results</h3>
@@ -101,8 +100,8 @@
 <th scope="col">Method</th>
 <th scope="col">Approach &amp; grasp</th>
 <th scope="col">Grasp &amp; transport</th>
-<th scope="col">Placement</th>
-<th scope="col">Interaction</th>
+<th scope="col">Target placement</th>
+<th scope="col">Simple interaction</th>
 <th scope="col">Stage macro avg.</th>
 </tr></thead>
 <tbody>
@@ -163,7 +162,7 @@
 <td>75.83 ± 0.83</td>
 </tr>
 <tr class="ours">
-<th scope="row">Ours Full Pipeline†</th>
+<th scope="row">Full Pipeline†</th>
 <td>91.33 ± 2.11</td>
 <td>86.00 ± 1.87</td>
 <td>87.56 ± 1.52</td>
@@ -172,7 +171,7 @@
 </tr>
 </tbody>
 </table></div>
-<p class="table-note">Mean ± sample SD, %, across 15 paired units (5 policy seeds × 3 environment seeds). The macro-average weights four stages equally within each unit; it is not end-to-end task success. † Full Pipeline additionally uses virtual expansion and deployment compensation.</p>
+<p class="table-note">Stage success (%), mean ± sample SD over 15 paired units. Each of five independently trained policies was evaluated with three environment seeds. The last column weights the four stages equally within each unit. † Full Pipeline adds proxy expansion and deployment compensation to Structured Dual-arm VLA.</p>
 </div>
 
 
@@ -205,7 +204,7 @@
 </tr>
 <tr>
 <th scope="row">Hand-crafted Waypoint</th>
-<td>Manual local waypoint</td>
+<td>Manual local waypoints</td>
 <td>42.44 ± 2.95</td>
 <td>78.50 ± 2.80</td>
 <td>7.50 ± 1.34</td>
@@ -213,15 +212,15 @@
 </tr>
 <tr>
 <th scope="row">Diffusion/Video Trajectory Baseline</th>
-<td>Generated video reference</td>
+<td>Generated-video reference</td>
 <td>53.33 ± 2.18</td>
 <td>80.50 ± 2.15</td>
 <td>8.67 ± 1.29</td>
 <td>45.78 ± 3.88</td>
 </tr>
 <tr class="ours">
-<th scope="row">Ours Trajectory Compensation</th>
-<td>Alignment + gated fusion + shared filtering</td>
+<th scope="row">Our Trajectory Compensation</th>
+<td>Mapping, fusion, QP, and recheck</td>
 <td>67.78 ± 3.00</td>
 <td>85.33 ± 2.29</td>
 <td>5.50 ± 1.04</td>
@@ -239,21 +238,21 @@
 <tr><th scope="row">No virtual-twin path</th><td>Real-trajectory replay only</td><td>×</td><td>✓</td><td>77.60 ± 2.41</td><td>74.17 ± 3.49</td></tr>
 <tr><th scope="row">Isaac Sim Random Aug.</th><td>Uniform randomization</td><td>×</td><td>✓</td><td>80.67 ± 2.79</td><td>75.67 ± 3.47</td></tr>
 <tr><th scope="row">Uniform Virtual Rollout</th><td>Uniform state sampling</td><td>×</td><td>✓</td><td>84.00 ± 2.62</td><td>78.83 ± 2.81</td></tr>
-<tr><th scope="row">Video Trajectory Aug.</th><td>Generated reference replay</td><td>×</td><td>✓</td><td>81.73 ± 2.12</td><td>78.67 ± 1.86</td></tr>
-<tr class="ours"><th scope="row">Failure-region Expansion</th><td>Boundary-guided sampling</td><td>✓</td><td>✓</td><td>89.20 ± 1.97</td><td>84.33 ± 2.58</td></tr>
-<tr><th scope="row">Failure-region + Residual RL</th><td>Boundary-guided + residual RL</td><td>✓</td><td>✓</td><td>90.27 ± 2.37</td><td>86.00 ± 2.80</td></tr></tbody></table></div>
-<p class="table-note">Mean ± SD, %. Failure-region expansion reaches 84.33% real-robot success, compared with 78.83% for uniform virtual rollout. Residual RL proposes simulation candidates only; all candidates use the same acceptance procedure. These are complete-configuration comparisons, with unmatched data/compute effects unresolved.</p></div>
+<tr><th scope="row">Video Trajectory Aug.</th><td>Generated-reference replay</td><td>×</td><td>✓</td><td>81.73 ± 2.12</td><td>78.67 ± 1.86</td></tr>
+<tr class="ours"><th scope="row">Failure-region Expansion</th><td>Failure-region sampling</td><td>✓</td><td>✓</td><td>89.20 ± 1.97</td><td>84.33 ± 2.58</td></tr>
+<tr><th scope="row">Failure-region + Residual RL</th><td>Failure-region sampling and residual exploration</td><td>✓</td><td>✓</td><td>90.27 ± 2.37</td><td>86.00 ± 2.80</td></tr></tbody></table></div>
+<p class="table-note">Complete-task success (%), mean ± sample SD. Both uniform and failure-region rollouts filter for success. Sampling near policy failures yielded 84.33% real-robot success versus 78.83% with uniform sampling. Adding simulation-only residual proposals yielded 86.00%.</p></div>
 <div role="tabpanel" id="panel-ablation" aria-labelledby="tab-ablation" data-group="results" hidden>
 <div class="table-scroll"><table><thead><tr><th scope="col">Variant</th><th scope="col">SV</th><th scope="col">PP</th><th scope="col">FE</th><th scope="col">SF</th><th scope="col">SC</th><th scope="col">Simulation success</th><th scope="col">Real-robot success</th><th scope="col">Step recovery</th><th scope="col">Collision</th></tr></thead><tbody>
 <tr><th scope="row">w/o Structured Dual-arm</th><td>×</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>81.47 ± 2.07</td><td>74.00 ± 3.11</td><td>56.44 ± 3.44</td><td>8.17 ± 1.14</td></tr>
-<tr><th scope="row">w/o Structured Virtual Env.</th><td>✓</td><td>×</td><td>✓</td><td>✓</td><td>✓</td><td>81.87 ± 1.41</td><td>74.00 ± 2.46</td><td>57.56 ± 4.27</td><td>7.17 ± 1.29</td></tr>
-<tr><th scope="row">w/o Boundary Expansion</th><td>✓</td><td>✓</td><td>×</td><td>✓</td><td>✓</td><td>83.73 ± 2.37</td><td>77.50 ± 1.64</td><td>58.89 ± 3.92</td><td>7.33 ± 1.76</td></tr>
+<tr><th scope="row">w/o Object-level Proxy</th><td>✓</td><td>×</td><td>✓</td><td>✓</td><td>✓</td><td>81.87 ± 1.41</td><td>74.00 ± 2.46</td><td>57.56 ± 4.27</td><td>7.17 ± 1.29</td></tr>
+<tr><th scope="row">w/o Failure-region Expansion</th><td>✓</td><td>✓</td><td>×</td><td>✓</td><td>✓</td><td>83.73 ± 2.37</td><td>77.50 ± 1.64</td><td>58.89 ± 3.92</td><td>7.33 ± 1.76</td></tr>
 <tr><th scope="row">w/o Success Filtering</th><td>✓</td><td>✓</td><td>✓</td><td>×</td><td>✓</td><td>84.80 ± 1.47</td><td>77.83 ± 2.29</td><td>59.55 ± 4.69</td><td>9.17 ± 1.22</td></tr>
 <tr><th scope="row">w/o Trajectory Compensation</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>×</td><td>88.80 ± 2.11</td><td>78.50 ± 2.07</td><td>31.78 ± 3.96</td><td>5.67 ± 1.14</td></tr>
-<tr class="ours"><th scope="row">Full Model</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>90.67 ± 1.95</td><td>86.17 ± 2.29</td><td>69.56 ± 4.86</td><td>5.17 ± 1.48</td></tr></tbody></table></div>
-<p class="table-note">Mean ± SD, %. SV: structured bimanual VLA; PP: object-level physical proxy; FE: failure-region expansion; SF: successful-trajectory filtering; SC: step compensation. ✓ enabled; × removed or replaced. This table uses the ablation task pool; its rates are not pooled with Tables 1, 2 or 4.</p></div>
+<tr class="ours"><th scope="row">Full Pipeline</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>90.67 ± 1.95</td><td>86.17 ± 2.29</td><td>69.56 ± 4.86</td><td>5.17 ± 1.48</td></tr></tbody></table></div>
+<p class="table-note">Ablation task pool, mean ± sample SD (%). Turning off step compensation lowered step recovery from 69.56% to 31.78%. SV = structured bimanual VLA, PP = object-level physical proxy, FE = failure-region expansion, SF = successful-trajectory filtering, SC = step compensation. ✓ enabled, × removed or replaced.</p></div>
 
-          <details class="evaluation-notes"><summary>Evaluation and reproducibility notes</summary><p>These are descriptive comparisons. Per-round expansion counts, matched compute budgets, quantitative proxy errors and full online timing records are not included in this release. See the <a href="https://github.com/RoboVLA/More-from-Less/blob/main/docs/REPRODUCIBILITY.md">reproducibility notes</a>.</p></details>
+          <details class="evaluation-notes"><summary>Evaluation and reproducibility notes</summary><p>The ablation pool is evaluated separately from the stage and recovery comparisons. The repository provides the saved trajectory examples and documents the available records in the <a href="https://github.com/RoboVLA/More-from-Less/blob/main/docs/REPRODUCIBILITY.md">reproducibility notes</a>.</p></details>
         </div>
       </div>
     </section>
@@ -261,7 +260,7 @@
     <section id="release" class="section narrow code-resources">
       <h2>Code &amp; Resources</h2>
       <p>Visit the <a href="https://github.com/RoboVLA/More-from-Less">GitHub repository</a>, <a href="code.html">source browser</a>, <a href="https://github.com/RoboVLA/More-from-Less/blob/main/README.md">README</a>, and <a href="docs/source_manifest.json">source manifest</a>. The release includes offline trajectory examples, object reconstruction and physical-proxy utilities, and simulator interfaces.</p>
-      <p class="availability-note">The release now includes new reference implementations of structured training, failure-guided expansion and shared-filter control, plus exact recomputation of the saved appendix trajectory CSVs. These additions are not recovered experimental code; original checkpoints and full evaluation logs remain unavailable. Implementation details and dependencies are documented in the <a href="https://github.com/RoboVLA/More-from-Less/blob/main/docs/REPRODUCIBILITY.md">reproducibility notes</a>.</p>
+      <p class="availability-note">The public code recomputes the saved offline pouring and wiping trajectories (Appendix Fig. A.4). The training, expansion and control modules are reference implementations. Original policy checkpoints and raw evaluation episodes are unavailable. See the <a href="https://github.com/RoboVLA/More-from-Less/blob/main/docs/REPRODUCIBILITY.md">reproducibility notes</a>.</p>
       <details class="quickstart"><summary>Run the available examples</summary><pre><code>git clone https://github.com/RoboVLA/More-from-Less.git
 cd More-from-Less
 python -m pip install -r requirements.txt
@@ -285,9 +284,8 @@ python scripts/serve.py</code></pre></details>
   </main>
   <footer>
     <div class="narrow">
-      <p>More from Less · Anonymous review</p>
+      <p>More from Less</p>
       <p>Layout inspired by <a href="https://nerfies.github.io/">Nerfies</a> and the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a>. <a href="https://github.com/RoboVLA/More-from-Less/blob/main/THIRD_PARTY_NOTICES.md">Sources &amp; licenses</a>.</p>
-      <p class="footer-note">Research manuscript · No journal acceptance is claimed.</p>
     </div>
   </footer>
 </body>

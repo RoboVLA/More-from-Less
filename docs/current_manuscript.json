@@ -1,139 +1,130 @@
 {
-  "version": "v164-anonymous",
-  "updated_on": "2026-09-30",
+  "version": "v207",
+  "updated_on": "2026-11-20",
   "title": "More from Less: 3D Gaussian Splatting Digital Twins with Iterative Expansion and Trajectory Compensation for Sparse-Demonstration Bimanual Manipulation",
-  "authors": [
-    "Anonymous Authors"
-  ],
-  "abstract_en": "Sparse bimanual demonstrations cover limited object states and contact configurations. More from Less combines structured action prediction, failure-region expansion, and local recovery. A vision–language–action (VLA) policy predicts joint action chunks with shared context and training-only geometric supervision. Object-level 3D Gaussian Splatting supplies appearance assets for physical proxies with separate collision geometry and assigned physics. Policy failures locate regions for virtual rollouts. Only complete trajectories passing task, physics, and safety checks enter real-dominated retraining. During deployment, asynchronous video references provide image-plane targets for current-state mapping and gated fusion. Base and fused actions pass through a shared quadratic program and nonlinear recheck. Across six real-robot task categories, Full Pipeline reaches a four-stage macro-average success rate of 89.00%, compared with 75.83% for Structured Dual-arm VLA. This comparison measures stage-level outcomes of the combined system, rather than complete-task success.",
-  "manuscript_status": "Research manuscript; no journal acceptance is claimed",
-  "pdf": "paper/anonymous_review.pdf",
-  "pdf_sha256": "5a40313b21cc43237f10f52fa7533208c956ee1c4a1b0be1d7fc4da95a0e994f",
-  "source_package": "Anonymous review manuscript",
-  "source_tex_sha256": "74dd684d4a42ff3798a64a7b75461509d1dc8025cecfb46dc5d408a00311cd03",
+  "abstract_en": "Bimanual manipulation requires coordinated arm motion and object contact, but costly demonstrations cover only limited interaction states. We therefore propose MFL (More from Less), combining failure-region expansion in digital twins with deployment-time trajectory compensation for sparse-demonstration learning. A structured vision–language–action (VLA) policy first learns joint bimanual actions from real demonstrations using shared task context and training-time geometric supervision. To extend interaction experience, MFL decouples the background and manipulable objects into independent 3D Gaussian Splatting (3DGS) submodels and combines them with separate collision geometry and external physical parameters. Policy rollouts in this digital twin locate failures, around which feasible initial states are sampled for candidate generation. Complete trajectories that finish the task and pass physics and safety checks enter real-dominant retraining. The updated policy then identifies subsequent expansion regions. At deployment, 2D target trajectories extracted from asynchronously generated videos are aligned with the current state and mapped to actions. Valid references are fused with policy outputs only at high risk. Both base and fused actions pass through a shared quadratic-programming filter and nonlinear recheck. Across six real-robot task categories, the full system achieves a four-stage macro-average success rate of 89.00%, exceeding structured VLA by 13.17 percentage points. In a separate step-recovery evaluation, the complete compensation configuration achieves 67.78% recovery.",
+  "source_tex_sha256": "e68ba2bc567ca199bf9fb46d61dd3c09c0c590f0388379f8c468a1a24091b39a",
   "figures": [
     {
       "number": "1",
-      "path": "static/media/v162/figure-1.png",
-      "sha256": "9f5414cb0bbeef82661d239232c1fc2748559c99ba425decc01177c7cb466dff",
-      "width": 1800,
-      "height": 1200,
-      "caption_latex": "The More from Less closed-loop framework. Structured bimanual VLA learns joint action chunks from sparse real demonstrations. Object-level 3DGS proxies support failure-guided expansion; only successful complete trajectories passing task, physics, and safety acceptance enter real-dominant retraining. At deployment, valid low-frequency references can compensate high-risk steps. Both base and fused actions pass through the shared QP and nonlinear recheck. The schematic layout was initially explored with imagegen and subsequently rebuilt in PowerPoint.",
-      "vector_path": "static/media/v162/figure-1.pdf",
-      "vector_sha256": "0edea527915e7750c1518b4a027cdb5fe1f45d766848d2a2a14d5be7a3b29aec",
-      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
+      "path": "static/media/v207/figure-1.png",
+      "width": 2200,
+      "height": 1467,
+      "sha256": "3c1fa9ca50e2d2e044be7062f89e573375d47c63adbeaaeea236435200474f4d",
+      "figure_pdf": "static/media/v207/figure-1.pdf",
+      "figure_pdf_sha256": "e4e47c82581ec57633500a5bb902ba245922a2dcc29fccc4d31a32734c3e0972",
+      "source_figure_sha256": "d434381ef9d49b3611df34ef2423fbdcf08d7de2c470ea4b4d9858f189630e4d"
     },
     {
       "number": "2",
-      "path": "static/media/v162/figure-2.png",
-      "sha256": "dc51b56a1be4a31c57d8f87fe64c31c36ef749af789c75f1b9d7b724d2a78a08",
-      "width": 1800,
-      "height": 1010,
-      "caption_latex": "Structured bimanual VLA. Synchronized global and wrist RGB images, language, and joint states produce a joint 32-step chunk of 12-dimensional absolute targets. Predicted and demonstrated actions use the same relation mapping and normalization. The two action-dependent relation maps contain pose and distance. Contact and role labels appear separately in the shared training context; they remain fixed and produce no action gradient. The schematic layout was initially explored with imagegen and subsequently rebuilt in PowerPoint.",
-      "vector_path": "static/media/v162/figure-2.pdf",
-      "vector_sha256": "5e9625297dd58e223a50e0caa6fc56fe43b8414b026ef51ca686f3dbee191859",
-      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
+      "path": "static/media/v207/figure-2.webp",
+      "width": 2200,
+      "height": 1234,
+      "sha256": "c6b8292a95d4dd3d392f6194a9d4e54c1f195ec0c7802332d9ff297cb5c2d75f",
+      "figure_pdf": "static/media/v207/figure-2.pdf",
+      "figure_pdf_sha256": "28d2913280c363968b0c19fe846273ef4c794a2fe90fce5bf6c7daff725f920f",
+      "source_figure_sha256": "5ccd901676542e8fb511eb5b1c8e091996247ae15399f4027d819d1598ce0342"
     },
     {
       "number": "3",
-      "path": "static/media/v162/figure-3.png",
-      "sha256": "35ee6933b242b279f446520c21ac8fe2220dc99df11826b12b58d61ef18de87e",
-      "width": 1800,
-      "height": 1010,
-      "caption_latex": "Object-level proxies and failure-guided expansion. Top: calibrated RGB and masks yield 3DGS visual assets, combined with simplified collision assets and recorded physics in Isaac Sim. Bottom: failures locate feasible sampling neighborhoods. Only successful complete trajectories passing joint acceptance enter real-dominant retraining. Optional residual RL proposes simulation candidates subject to the same acceptance; it is not deployed on the robot. The schematic layout was initially explored with imagegen and subsequently rebuilt in PowerPoint.",
-      "vector_path": "static/media/v162/figure-3.pdf",
-      "vector_sha256": "816a0df6ccf31fbe01d94d48db1b92bdacafa322dc464fa5ea679498a821f6a3",
-      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
+      "path": "static/media/v207/figure-3.webp",
+      "width": 2200,
+      "height": 1234,
+      "sha256": "5084ed3b3386ffedaaadb6eaab8465edc6f83c76980119487c4ae3f36667e171",
+      "figure_pdf": "static/media/v207/figure-3.pdf",
+      "figure_pdf_sha256": "4abc7e985a7d1a3c48dd3b4fe865faddafc7a742dfc6d83b481f1830ef388cd1",
+      "source_figure_sha256": "9383f892b9b33c85ab34a3a1969fa423db406cfcb70e255f2eeb5b05dec57a33"
     },
     {
       "number": "4",
-      "path": "static/media/v162/figure-4.png",
-      "sha256": "9c224eac0e66bc1fe0d7abf4ebffa9b8cbfc7fdef97c45c448e2cf4b6e28494d",
-      "width": 1800,
-      "height": 1200,
-      "caption_latex": "Step-level compensation and shared safety filtering. High risk requests an asynchronous 2D reference. Current-state alignment, depth and calibration, task-masked DLS IK, and validity checks precede gated fusion. Low risk, waiting, or invalidity sets the fusion weight to zero. All actions pass through the shared QP and nonlinear recheck; failure causes slowdown or hold. Grippers inherit VLA targets; unobserved orientation has no exact-preservation guarantee. The schematic layout was initially explored with imagegen and subsequently rebuilt in PowerPoint.",
-      "vector_path": "static/media/v162/figure-4.pdf",
-      "vector_sha256": "48b6fc6c4e93a82d195be926e2dfd06ed55cee6552d4eb9e9abbc93fdfd5506a",
-      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
+      "path": "static/media/v207/figure-4.webp",
+      "width": 2200,
+      "height": 1467,
+      "sha256": "b6a5fc3e16f47241b3cacb4ee4ddd7d8e103b311af2f2cb5b61c9a59b3e7689e",
+      "figure_pdf": "static/media/v207/figure-4.pdf",
+      "figure_pdf_sha256": "951688f26e808128aabd4501c3541ebacbc45681e31f22cd8e96dd2f703bc4a5",
+      "source_figure_sha256": "21704abe0608d80e334b2196525df5b8ac3f3a508fe9c61b641680281e63b7be"
     },
     {
       "number": "5",
-      "path": "static/media/v162/figure-5.png",
-      "sha256": "420882206cee779fcfffb53f09a48fa1dbd0ca665ef1b32db77c2094c1bdcfa2",
+      "path": "static/media/v207/figure-5.webp",
       "width": 2600,
       "height": 2301,
-      "caption_latex": "Examples of six bimanual tasks and multiview observations. Frames in each three-view group are sampled at the same relative time in the source videos. Separate clips illustrate the constituent stages of the wipe-and-pour composite task. The wipe-board and hold-and-wipe-board tasks use different times from the same recording to show wiping and cooperative board stabilization, respectively. These examples do not represent six independent complete evaluation episodes.",
-      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
+      "sha256": "ba24603cb2c5214590046134663e244be366dad7f3dfbb139341b6051114dd72",
+      "figure_pdf": "static/media/v207/figure-5.pdf",
+      "figure_pdf_sha256": "ab4829de3a020020da21110f1f2e374af86189befc04538b07f4c475ede89873",
+      "source_figure_sha256": "ec0b20bb9d2de5ca013841ba0bb1be61dff220fd9acc832bf39b29c1c9ac3d1f"
     },
     {
       "number": "6",
-      "path": "static/media/v162/figure-6.png",
-      "sha256": "446d7fbb7732590f5ac2132e7a18f435e00ecaf2953de1a6dadb6e08e335709a",
+      "path": "static/media/v207/figure-6.webp",
       "width": 2600,
-      "height": 844,
-      "caption_latex": "RGB observations, ID masks, and region extraction for object-level modeling. Columns correspond to acquisition groups 001--008. The first two rows show same-view RGB images and ID masks, with selected regions marked in blue; the third row shows enlarged RGB content within the masks.",
-      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
+      "height": 845,
+      "sha256": "0d4a2aa7034915f7c194c244a0a05e88df91b332a442078362c69623175a0305",
+      "figure_pdf": "static/media/v207/figure-6.pdf",
+      "figure_pdf_sha256": "a0abc9862dee5dafb9d0c5a2b0d240c1c3314e7a40016e770d7a6c3ca0f06b77",
+      "source_figure_sha256": "9d1f4538cfc72c21d1f620d4e328f6f8601ebd2794912b35152582d136f05be0"
     },
     {
       "number": "7",
-      "path": "static/media/v162/figure-7.png",
-      "sha256": "b3e6e6e18e418beba121cfec5f41384e26c758d28dd29399cd70478ad710c6a9",
+      "path": "static/media/v207/figure-7.webp",
       "width": 2600,
-      "height": 964,
-      "caption_latex": "Real-robot interaction sequences for pouring and board wiping. Time advances from left to right; the upper-right label in each frame gives the actual time (s) within its source clip, with the two rows timed independently. Orange boxes with white outlines and numbered labels mark interaction regions of interest: 1 denotes the visible part of the held container, 2 the receiving container, and 3 the eraser and adjacent board surface. Numbers link the figure to the text and do not denote risk triggers, compensation activation, or successful recovery.",
-      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
+      "height": 965,
+      "sha256": "54f8a7f023112f5df36d02a51d401c95110fd61f604763d72fcd060e7c49e0b9",
+      "figure_pdf": "static/media/v207/figure-7.pdf",
+      "figure_pdf_sha256": "e69125a97405f936126da5f7b9fe88beee8bf30d327629b1c1b960eabcd6f2fa",
+      "source_figure_sha256": "d0653069ffa6d371baf322d705bb1032cd1e01a499e023b35fb7e08dcad8a9e3"
     },
     {
       "number": "8",
-      "path": "static/media/v162/figure-8.png",
-      "sha256": "a387f5db30a8ff78a6b0dbd5bfea67d342ff2c79ce8dea212f9afb0bd9b3ed23",
+      "path": "static/media/v207/figure-8.webp",
       "width": 2600,
       "height": 1311,
-      "caption_latex": "Illustrative potential failure factors and inspection points. Two examples appear in each column: 1--2 show holding and pouring targets, 3--4 a proxy opening and object point cloud, 5--6 a cup handle and eraser, and 7--8 a box lid and microwave hinge. Markers indicate observation regions only, not annotated failure episodes.",
-      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
+      "sha256": "ddda6d0cb207bdb75d32ed2fca4ca43e5c9049649a78f1d17de3c4bbdc489803",
+      "figure_pdf": "static/media/v207/figure-8.pdf",
+      "figure_pdf_sha256": "8603d2a4cdd6b718bcaf42419bf56a11eecb3213671907237e93db8c6a90f685",
+      "source_figure_sha256": "7eabec0b2d2a2d8c06ad38650347d442a43daddcabc57d5cfa794df89a8a2e25"
     },
     {
       "number": "A.1",
-      "path": "static/media/v162/figure-A.1.png",
-      "sha256": "9c1c2ef9861d1a789b8baa3a543e41ba878e5cc362df109d080a2cd395447d48",
+      "path": "static/media/v207/figure-A.1.webp",
       "width": 2600,
-      "height": 1354,
-      "caption_latex": "Real execution, object-level proxy, and virtual execution for medicine-box opening. The upper row contains two real-robot frames and the proxy scene; the lower row contains three simulation frames. Marker 1 indicates the visible lid region and marker 2 the proxy articulation region. Times are measured independently in the respective videos; rows do not imply synchronized states.",
-      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
+      "height": 1355,
+      "sha256": "b1bb081d3c11924206098fd48b1dfaf4d7e33b751837bcbe9e51ff13b9e7c58e",
+      "figure_pdf": "static/media/v207/figure-A.1.pdf",
+      "figure_pdf_sha256": "64853f125a3223840328b8c0f2b9cad557ecd53bd34d8e33aec66844bddb1df2",
+      "source_figure_sha256": "b7980101e29ae2010ed38238245cea5aa37b19250c0098d8af90b0055aedf061"
     },
     {
       "number": "A.2",
-      "path": "static/media/v162/figure-A.2.png",
-      "sha256": "a07e0c089d276d32bde776cdf9534c24e47a5b3bde9007f92bba7548019c6005",
+      "path": "static/media/v207/figure-A.2.webp",
       "width": 2600,
       "height": 1712,
-      "caption_latex": "Representative temporal frames from five groups of real bimanual action clips. From top to bottom, the rows show pouring, microwave opening, microwave closing, medicine-box opening, and board wiping. Each row comes from one video; the five columns follow temporal order, with source-video time (s) shown in the upper-right corner. Orange boxes mark interaction regions of interest, such as containers, doors, box lids, and erasers.",
-      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
+      "sha256": "05e2b1249762a316b8c01e46b86df63da2acd6d3ada1da8b44f815856f29f276",
+      "figure_pdf": "static/media/v207/figure-A.2.pdf",
+      "figure_pdf_sha256": "eaff6de910d65c852ffead71c4d59f0fad366f85149a5f39d5a8cedebba6d8d5",
+      "source_figure_sha256": "45bbef1c98ce956492784dc801be3c5cceaa9243c7a73959a5ca426da14333ff"
     },
     {
       "number": "A.3",
-      "path": "static/media/v162/figure-A.3.png",
-      "sha256": "cd7a4bd80265dd29079d5ada4d0f5a0f3e77ccbb595e5a3a7ef8859f095f9461",
+      "path": "static/media/v207/figure-A.3.webp",
       "width": 2600,
-      "height": 1121,
-      "caption_latex": "Offline image-trajectory diagnostics for pouring and board wiping. The four columns show real-video frames, trajectories extracted from generated videos, retargeted real-video trajectories, and offline fused trajectories, respectively. The last three columns overlay complete pixel trajectories on the same generated frame, with dots marking the trajectory positions corresponding to that frame. Upper-right labels give relative times in the respective source videos; resampling does not imply synchronization between real and generated videos.",
-      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
+      "height": 1122,
+      "sha256": "61d0a30b9e8e47c37d20228d0a6908292c58c1f95836a3abb777b198a42644d7",
+      "figure_pdf": "static/media/v207/figure-A.3.pdf",
+      "figure_pdf_sha256": "222215ae79955bb3bc6e58ac3cfb36097e90ca2b2ff6041191e45e004a5e9de5",
+      "source_figure_sha256": "86846c370e68425a5533054451f934031a8ec11a311c9cdafed6f54beb53f87d"
     },
     {
       "number": "A.4",
-      "path": "static/media/v162/figure-A.4.png",
-      "sha256": "3eb08df2c853daf2feadc9c2c336207ba6f82652ebae20ff87b050023f14f3b0",
+      "path": "static/media/v207/figure-A.4.webp",
       "width": 2600,
       "height": 1710,
-      "caption_latex": "Numerical diagnostics of offline pouring and board-wiping trajectories. Each row represents one clip, and n denotes the trajectory-point count. The three columns show the camera-frame XY path, modeled depth Z, and 3-D Euclidean distance to the retargeted trajectory R. G denotes the trajectory extracted from the generated video and mapped into 3-D; F denotes the offline fused trajectory. The XY axes have equal scales, and curves are not independently normalized. Time is the relative sampling time of the target generated clip.",
-      "source_note": "Retained manuscript figure; published path and checksum identify the release asset. Workstation-only source paths are omitted."
+      "sha256": "a0c5236cd765badef59171db57af07cb898e179e388a5c65d4d86874a5e37178",
+      "figure_pdf": "static/media/v207/figure-A.4.pdf",
+      "figure_pdf_sha256": "ffc941a0df47ba3aea9956ca59296c73dd290e0dbbf88742f7b7b3d398ad2ce9",
+      "source_figure_sha256": "3e34fbeade86accec89bd81d0384970d20579356421fa28abff8782dd9771749"
     }
-  ],
-  "notes": [
-    "Author names, affiliations, contact details, grant identifier, and named contributions are withheld for anonymous review.",
-    "Scientific content, experimental values, equations, and references are retained.",
-    "The anonymous GitHub project URL is included at the end of the abstract.",
-    "Resource availability updated to describe the public release and distinguish new reference implementations from historical experimental code."
   ],
   "website_manuscript_link_visible": false
 }
