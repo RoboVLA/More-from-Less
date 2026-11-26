@@ -4,15 +4,15 @@
 
 [Project website](https://robovla.github.io/More-from-Less/) · [GitHub repository](https://github.com/RoboVLA/More-from-Less) · [Source browser](https://robovla.github.io/More-from-Less/code.html) · [Reproducibility](docs/REPRODUCIBILITY.md) · [Method reference](docs/METHOD_REFERENCE.md)
 
-MFL learns coordinated bimanual actions from sparse real demonstrations. In simulation, the current policy’s failures guide where to collect new training trajectories. On the real robot, a valid video-derived reference can correct an individual high-risk step.
+MFL learns coordinated bimanual actions from sparse real demonstrations. In simulation, the current policy’s failures guide where to collect new training trajectories. During recovery stages that can tolerate a delay, the controller can request a video and use its tracked motion to correct a high-risk step.
 
-[![MFL training and execution overview](static/media/v207/figure-1.png)](static/media/v207/figure-1.pdf)
+[![MFL training and execution overview](static/media/v221/figure-1.png)](static/media/v221/figure-1.pdf)
 
 ## Method
 
-1. **Learn the joint action.** Three synchronized RGB views, language and joint state feed a shared VLA policy. Each of its 32 steps contains five joint targets and one gripper target per arm. The training loss compares predicted and demonstrated actions in a common geometry: the relative translation and rotation of the two end effectors and the minimum clearance of prohibited robot link pairs. Contact and role labels are fixed training context. [Policy diagram](static/media/v207/figure-2.pdf)
-2. **Expand around failures.** The background and movable objects have independent 3DGS appearance models. Separate collision geometry and externally assigned physics allow the policy to interact with them in Isaac Sim. A failed or high-risk state identifies a neighborhood for sampling feasible starts. Only complete successful trajectories passing task, physics and safety checks enter the cumulative virtual set. Retraining gives real demonstrations greater weight, and the updated policy identifies the next neighborhoods. Optional residual RL proposes candidates in simulation. [Expansion diagram](static/media/v207/figure-3.pdf)
-3. **Recover individual steps.** A 2D path tracked in an asynchronously generated video (Kling AI 3.0, approximately two minutes per request) is aligned to the current state. Depth from the head camera, calibration and task-masked inverse kinematics supply local joint targets. The grippers retain the VLA commands. A valid reference contributes only at high risk. Both base and fused commands pass through the same QP and nonlinear recheck before execution. [Execution diagram](static/media/v207/figure-4.pdf)
+1. **Learn the joint action.** Three synchronized RGB views, language and joint state feed a shared VLA policy. Each of its 32 steps contains five joint targets and one gripper target per arm. The training loss compares predicted and demonstrated actions in a common geometry: the relative translation and rotation of the two end effectors and the minimum clearance of prohibited robot link pairs. Contact and role labels are fixed training context. [Policy diagram](static/media/v221/figure-2.pdf)
+2. **Expand around failures.** The background and movable objects have independent 3DGS appearance models. Separate collision geometry and externally assigned physics allow the policy to interact with them in Isaac Sim. A failed or high-risk state identifies a neighborhood for sampling feasible starts. Only complete successful trajectories passing task, physics and safety checks enter the cumulative virtual set. Retraining gives real demonstrations greater weight, and the updated policy identifies the next neighborhoods. Optional residual RL proposes candidates in simulation. [Expansion diagram](static/media/v221/figure-3.pdf)
+3. **Recover individual steps.** During delay-tolerant recovery, a risk-threshold crossing, stage transition or local failure can trigger an asynchronous request to Kling AI 3.0 (about two minutes). The base policy keeps running through the safety filter. When the video returns, the controller tracks the target in 2D and aligns it to the current state and task stage. Depth from the head camera, calibration and task-masked inverse kinematics supply local joint targets. The grippers retain the VLA commands. A valid reference contributes only at high risk. Both base and fused commands pass through the same QP and nonlinear recheck before execution. [Execution diagram](static/media/v221/figure-4.pdf)
 
 ## Results
 
@@ -23,7 +23,7 @@ MFL learns coordinated bimanual actions from sparse real demonstrations. In simu
 | Table 4 · Video-reference baseline → Full compensation | Step recovery on matched trigger segments | 53.33% → 67.78% |
 | Table 6 · Full Pipeline → Step compensation disabled | Step recovery in the separate ablation task pool | 69.56% → 31.78% |
 
-The six real-robot task categories include composite wiping–pouring and cooperative board wiping. Table 1 uses 15 paired policy–environment units: five independently trained policies, each evaluated with three environment seeds. The [project results](https://robovla.github.io/More-from-Less/#results) give the full four tables with sample standard deviations.
+We designed six tabletop tasks for the SO101 bimanual platform. They include pouring, opening a microwave, opening a medicine box, board wiping, sequential wiping–pouring, and cooperative wiping with one arm holding the board steady. Table 1 uses 15 paired policy–environment units: five independently trained policies, each evaluated with three environment seeds. The [project results](https://robovla.github.io/More-from-Less/#results) give the full four tables with sample standard deviations.
 
 ## What the release reproduces
 
@@ -72,7 +72,7 @@ Without PyTorch, gradient tests are explicitly skipped. Optional pipeline stages
 | [Camera utilities](tools/gemini_camera/) | RGB-D acquisition and tuning; hardware, drivers and SDK required. |
 | [Historical video tools](tools/trajectory_compensation/) | Original offline processing scripts with scene-specific defaults. |
 | [Pipeline entry](paper_pipeline/) | Appendix reproduction and optional reference-module checks. |
-| [Manuscript figures](static/media/v207/) | Figures 1–8 and A.1–A.4 from the current English manuscript, with individual PDFs and web previews. |
+| [Manuscript figures](static/media/v221/) | Figures 1–8 and A.1–A.4 from English manuscript v221, with individual PDFs and web previews. |
 | [Validation record](docs/VALIDATION.md) | Verified scope, preserved data and known limits. |
 
 The [paper-to-code map](docs/PAPER_PIPELINE.md), [source manifest](docs/source_manifest.json), and [asset guide](docs/DATA_AND_ASSETS.md) record provenance and version boundaries.

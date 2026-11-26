@@ -1,6 +1,6 @@
 # Reproducibility and evidence scope
 
-The project page and README follow the v207 English manuscript. This release combines retained source snapshots, new method reference implementations, and a verifiable appendix-processing entry point.
+The project page and README follow the v221 English manuscript. This release combines retained source snapshots, new method reference implementations, and a verifiable appendix-processing entry point.
 
 | Component | What can be run or checked | What this does not reproduce |
 |---|---|---|

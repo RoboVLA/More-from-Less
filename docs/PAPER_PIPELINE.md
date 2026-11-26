@@ -1,6 +1,6 @@
 # Paper-to-code mapping
 
-Section and equation references follow the v207 English manuscript. The [figure manifest](current_manuscript.json) identifies its web previews and figure PDFs.
+Section and equation numbers follow the v221 English manuscript. The [figure manifest](current_manuscript.json) identifies the corresponding web previews and figure PDFs.
 
 | Paper component | Implementation | Scope |
 |---|---|---|
